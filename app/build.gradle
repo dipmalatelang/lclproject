@@ -4,7 +4,7 @@ plugins {
 
 android {
     compileSdkVersion 30
-    buildToolsVersion "30.0.2"
+    buildToolsVersion "30.0.3"
 
     defaultConfig {
         applicationId "com.example.lcl"
@@ -12,6 +12,7 @@ android {
         targetSdkVersion 30
         versionCode 1
         versionName "1.0"
+        multiDexEnabled true
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -35,15 +36,34 @@ android {
 
 dependencies {
 
-    implementation 'androidx.appcompat:appcompat:1.2.0'
-    implementation 'com.google.android.material:material:1.3.0'
-    implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
-    testImplementation 'junit:junit:4.+'
-    androidTestImplementation 'androidx.test.ext:junit:1.1.2'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
-    implementation 'com.google.android.material:material:1.3.0'
-    implementation 'de.hdodenhof:circleimageview:3.1.0'
+    implementation fileTree(dir: "libs", include: ["*.jar"])
+    implementation "androidx.legacy:legacy-support-v4:$rootProject.legacy"
 
+    //Guava
+    implementation("com.google.guava:guava:$rootProject.guava_version")
 
+    //Navigation
+    implementation "androidx.navigation:navigation-fragment:$rootProject.navigation_version"
+    implementation "androidx.navigation:navigation-ui:$rootProject.navigation_version"
+
+    //Common
+    implementation "androidx.appcompat:appcompat:$rootProject.appCompat_version"
+    implementation "androidx.constraintlayout:constraintlayout:$rootProject.constraintLayout_version"
+    implementation "androidx.recyclerview:recyclerview:$rootProject.recyclerView_version"
+    implementation "com.github.bumptech.glide:glide:$rootProject.glide_version"
+    implementation "com.google.android.material:material:$rootProject.material_version"
+    annotationProcessor "com.github.bumptech.glide:compiler:$rootProject.glide_version"
+
+    // tools
+    implementation "com.intuit.sdp:sdp-android:$rootProject.sdp_version"
+    implementation "de.hdodenhof:circleimageview:$rootProject.circle_imageView_version"
+    implementation 'androidx.multidex:multidex:2.0.1'
+
+    // networking
+    implementation "com.google.code.gson:gson:$rootProject.gson_version"
+    implementation "com.squareup.retrofit2:retrofit:$rootProject.retrofit_version"
+    implementation "com.squareup.retrofit2:converter-gson:$rootProject.retrofit_version"
+    implementation "com.squareup.okhttp3:okhttp:$rootProject.okhttp_version"
+    implementation "com.squareup.okhttp3:logging-interceptor:$rootProject.okhttp_version"
 
 }

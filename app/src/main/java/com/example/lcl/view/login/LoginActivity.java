@@ -1,4 +1,4 @@
-package com.example.lcl.login;
+package com.example.lcl.view.login;
 
 import androidx.appcompat.app.AppCompatActivity;
 
