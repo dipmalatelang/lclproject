@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:title="Details"
+        android:id="@+id/details_Fragment"
+        android:icon="@drawable/ic_baseline_date_range_24"/>
+    <item android:title="Team"
+        android:id="@+id/teamFragment"
+        android:icon="@drawable/ic_baseline_date_range_24"/>
+
+    <item
+        android:id="@+id/playerFragment"
+        android:title="MyPlayer"
+        android:icon="@drawable/ic_baseline_date_range_24"/>
+
+
+</menu>
