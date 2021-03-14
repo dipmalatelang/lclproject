@@ -1,4 +1,4 @@
-package com.example.lcl.data;
+package com.example.lcl.data.teams;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;

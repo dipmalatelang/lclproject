@@ -7,7 +7,7 @@ import android.util.Log;
 import android.widget.Toast;
 
 import com.example.lcl.R;
-import com.example.lcl.data.TeamListResponse;
+import com.example.lcl.data.teams.TeamListResponse;
 import com.example.lcl.network.ApiClient;
 
 import org.jetbrains.annotations.NotNull;
