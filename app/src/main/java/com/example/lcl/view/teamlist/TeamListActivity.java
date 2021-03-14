@@ -25,7 +25,7 @@ public class TeamListActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_team_list);
 
-        performServerCallToFetchTeamList("M1");
+        performServerCallToFetchTeamList("T1");
     }
 
     private void performServerCallToFetchTeamList(String teamId){
