@@ -5,11 +5,9 @@
     android:layout_height="match_parent"
     tools:context=".PlayerFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:gravity="center"
-        android:text="Player" />
+   <androidx.recyclerview.widget.RecyclerView
+       android:layout_width="match_parent"
+       android:layout_height="match_parent"
+       tools:listitem="@layout/rec_list_player_team"/>
 
 </FrameLayout>
