@@ -16,7 +16,7 @@
         android:theme="@style/Theme.LCL"
         android:usesCleartextTraffic="true"
         tools:targetApi="n">
-        <activity android:name=".view.teamlist.PlayerDetails_Activity"/>
+        <activity android:name=".view.PlayerDetails_Activity"/>
         <activity android:name=".view.playerlist.PlayerListActivity"/>
         <activity
             android:name=".view.teamlist.TeamListActivity"
@@ -26,13 +26,16 @@
             android:exported="true" />
         <activity
             android:name=".view.HomeScreen_Activity"
-            android:exported="true" />
-        <activity android:name=".view.login.LoginActivity">
+            android:exported="true" >
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity android:name=".view.login.LoginActivity">
+
         </activity>
         <activity android:name=".MainActivity" />
     </application>
