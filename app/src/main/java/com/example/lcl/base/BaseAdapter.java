@@ -30,7 +30,7 @@ public class BaseAdapter<T> extends RecyclerView.Adapter<BaseAdapter.ViewHolder>
     @Override
     public BaseAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         ViewDataBinding binding = DataBindingUtil.bind(LayoutInflater.from(parent.getContext()).inflate(viewType, parent, false));
-        if(binding != null){
+        if (binding != null) {
             return new ViewHolder<>(binding);
         }
         throw new AssertionError("Incompatible viewType: " + viewType);
@@ -93,7 +93,5 @@ public class BaseAdapter<T> extends RecyclerView.Adapter<BaseAdapter.ViewHolder>
         public V getBinding() {
             return v;
         }
-
     }
-
 }
