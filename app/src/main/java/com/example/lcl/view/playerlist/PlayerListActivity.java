@@ -1,21 +1,15 @@
 package com.example.lcl.view.playerlist;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.databinding.DataBindingUtil;
-
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.Toast;
-
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.databinding.DataBindingUtil;
 import com.example.lcl.R;
 import com.example.lcl.data.playerlist.PlayerListResponse;
-import com.example.lcl.data.teams.TeamListResponse;
 import com.example.lcl.databinding.ActivityPlayerListBinding;
 import com.example.lcl.network.ApiClient;
-import com.example.lcl.view.teamlist.TeamListActivity;
-
 import org.jetbrains.annotations.NotNull;
-
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;

@@ -1,23 +1,16 @@
 package com.example.lcl.view.login;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.app.AppCompatDelegate;
-import androidx.databinding.DataBindingUtil;
-
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
-
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.databinding.DataBindingUtil;
 import com.example.lcl.R;
 import com.example.lcl.data.login.LoginResponse;
-import com.example.lcl.data.teams.TeamListResponse;
 import com.example.lcl.databinding.ActivityLoginBinding;
 import com.example.lcl.network.ApiClient;
-import com.example.lcl.view.teamlist.TeamListActivity;
-
 import org.jetbrains.annotations.NotNull;
-
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -50,8 +43,9 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         public void onResponse(@NotNull Call<LoginResponse> call, Response<LoginResponse> response) {
             binding.pbLogin.hide();
             if (response.isSuccessful()) {
-                Log.d(TAG, "onResponse: " + response.body().getMessage());
-                Toast.makeText(LoginActivity.this, response.body().getMessage(), Toast.LENGTH_SHORT).show();
+                if(response.body() != null){
+                    Log.d(TAG, "onResponse: " + response.body().getMessage());
+                }
             } else {
                 Log.e(TAG, "onResponse: something went wrong");
             }
