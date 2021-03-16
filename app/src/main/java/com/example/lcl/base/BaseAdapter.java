@@ -18,9 +18,9 @@ public class BaseAdapter<T> extends RecyclerView.Adapter<BaseAdapter.ViewHolder>
 
     private List<? extends T> mList;
     private final int mLayoutId;
-    private BaseInterface mBaseInterface;
+    private com.example.lcl.base.BaseInterface mBaseInterface;
 
-    public BaseAdapter(List<? extends T> list, int layoutId, BaseInterface baseInterface) {
+    public BaseAdapter(List<? extends T> list, int layoutId, com.example.lcl.base.BaseInterface baseInterface) {
         this.mList = list;
         this.mLayoutId = layoutId;
         this.mBaseInterface = baseInterface;
@@ -59,7 +59,7 @@ public class BaseAdapter<T> extends RecyclerView.Adapter<BaseAdapter.ViewHolder>
         notifyDataSetChanged();
     }
 
-    public void setListener(BaseInterface baseInterface) {
+    public void setListener(com.example.lcl.base.BaseInterface baseInterface) {
         this.mBaseInterface = baseInterface;
     }
 

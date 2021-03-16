@@ -19,19 +19,23 @@
         tools:context=".view.playerlist.PlayerListActivity">
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rv_player_list"
+            android:id="@+id/rv_appointments"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:layout_margin="@dimen/_8sdp"
+            android:layout_marginStart="@dimen/_3sdp"
+            android:layout_marginTop="@dimen/_8sdp"
+            android:layout_marginEnd="@dimen/_3sdp"
+            android:layout_marginBottom="@dimen/_4sdp"
             app:layoutFile="@{@layout/rec_list_player_team}"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:listData="@{data}"
             app:listener="@{callback}"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
             tools:listitem="@layout/rec_list_player_team"
+            android:visibility="visible"
             />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
