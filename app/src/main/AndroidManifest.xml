@@ -16,7 +16,7 @@
         android:theme="@style/Theme.LCL"
         android:usesCleartextTraffic="true"
         tools:targetApi="n">
-        <activity android:name=".view.playerlist.PlayerListActivity"></activity>
+        <activity android:name=".view.playerlist.PlayerListing"></activity>
         <activity
             android:name=".view.teamlist.TeamListActivity"
             android:exported="true" />

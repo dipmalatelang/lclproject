@@ -7,7 +7,7 @@ import java.util.List;
 public class BindingAdapters {
 
     @SuppressWarnings({"unchecked", "rawtypes"})
-    @androidx.databinding.BindingAdapter(value = {"layoutFile", "listener", "listData"}, requireAll = false)
+    @androidx.databinding.BindingAdapter(value = {"layoutFile", "listener", "listData"}, requireAll = true)
     public static <E> void bindAdapter(RecyclerView recyclerView, int id, BaseAdapter.BaseInterface listener, List<E> list) {
         if (recyclerView.getAdapter() == null) {
             recyclerView.setAdapter(new BaseAdapter(list, id, listener));
