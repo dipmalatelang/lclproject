@@ -183,10 +183,9 @@
 
         <androidx.core.widget.ContentLoadingProgressBar
             android:id="@+id/pb_login"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
+            android:foregroundGravity="center"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
             style="@style/progressBarStyle"
             />
     </RelativeLayout>
