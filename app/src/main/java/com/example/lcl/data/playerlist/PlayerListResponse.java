@@ -3,6 +3,8 @@ package com.example.lcl.data.playerlist;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+import java.util.List;
+
 public class PlayerListResponse {
 
     @SerializedName("$id")
@@ -19,7 +21,7 @@ public class PlayerListResponse {
 
     @SerializedName("data")
     @Expose
-    private PlayerData data;
+    private List<PlayerData> data;
 
     @SerializedName("resPlayers")
     @Expose
@@ -53,11 +55,11 @@ public class PlayerListResponse {
         this.message = message;
     }
 
-    public PlayerData getData() {
+    public List<PlayerData> getData() {
         return data;
     }
 
-    public void setData(PlayerData data) {
+    public void setData(List<PlayerData> data) {
         this.data = data;
     }
 
