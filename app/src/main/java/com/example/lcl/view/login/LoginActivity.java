@@ -1,11 +1,14 @@
 package com.example.lcl.view.login;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
+
+import com.example.lcl.MainActivity;
 import com.example.lcl.R;
 import com.example.lcl.data.login.LoginResponse;
 import com.example.lcl.databinding.ActivityLoginBinding;
@@ -43,8 +46,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         public void onResponse(@NotNull Call<LoginResponse> call, Response<LoginResponse> response) {
             binding.pbLogin.hide();
             if (response.isSuccessful()) {
-                if(response.body() != null){
-                    Log.d(TAG, "onResponse: " + response.body().getMessage());
+                if(response.body().getStatus()){
+                    startActivity(new Intent(LoginActivity.this, MainActivity.class));
                 }
             } else {
                 Log.e(TAG, "onResponse: something went wrong");

@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <import type="android.view.View"/>
+        <variable
+            name="data"
+            type="com.example.lcl.data.playerlist.PlayerData" />
+
+        <variable
+            name="position"
+            type="java.lang.Integer" />
+
+        <variable
+            name="callback"
+            type="com.example.lcl.base.BaseInterface" />
+    </data>
+
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/_4sdp"
+        android:onClick="@{(v) -> callback.onItemClicked(data, v, position)}"
+        android:background="@color/cardview_shadow_start_color"
+        app:cardElevation="@dimen/_4sdp"
+        app:cardCornerRadius="@dimen/_2sdp"
+        >
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_65sdp"
+            >
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/iv_player_profile_image"
+                android:layout_width="@dimen/_40sdp"
+                android:layout_height="@dimen/_40sdp"
+                android:layout_margin="@dimen/_8sdp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                tools:src="@mipmap/ic_launcher_round"
+                />
+
+            <TextView
+                android:id="@+id/tv_player_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_4sdp"
+                android:layout_marginStart="@dimen/_8sdp"
+                android:text="@{data.firstName + ` ` + data.lastName}"
+                android:textSize="@dimen/_12sdp"
+                app:layout_constraintStart_toEndOf="@+id/iv_player_profile_image"
+                app:layout_constraintTop_toTopOf="@+id/iv_player_profile_image"
+                app:layout_constraintBottom_toTopOf="@+id/tv_player_role_label"
+                tools:text="Sachin Tendulkar" />
+
+            <TextView
+                android:id="@+id/tv_player_role_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_4sdp"
+                android:text="@string/role"
+                android:textSize="@dimen/_12sdp"
+                app:layout_constraintStart_toStartOf="@+id/tv_player_name"
+                app:layout_constraintTop_toBottomOf="@+id/tv_player_name"
+                app:layout_constraintBottom_toTopOf="@+id/tv_player_base_price"
+                />
+
+            <RelativeLayout
+                android:id="@+id/rl_role"
+                android:layout_width="@dimen/_20sdp"
+                android:layout_height="@dimen/_20sdp"
+                android:layout_marginStart="@dimen/_4sdp"
+                android:layout_marginEnd="@dimen/_4sdp"
+                app:layout_constraintBottom_toBottomOf="@+id/tv_player_role_label"
+                app:layout_constraintStart_toEndOf="@+id/tv_player_role_label"
+                app:layout_constraintTop_toTopOf="@+id/tv_player_role_label"
+                >
+
+                <ImageView
+                    android:id="@+id/iv_role_batsman"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:padding="@dimen/_3sdp"
+                    android:src="@drawable/ic_bat"
+                    android:visibility="@{data.roles.equalsIgnoreCase(`Batting`) ? View.VISIBLE : View.GONE}"
+                    tools:visibility="visible"
+                    tools:ignore="ContentDescription"
+                    />
+
+                <ImageView
+                    android:id="@+id/iv_role_bowler"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:padding="@dimen/_3sdp"
+                    android:src="@drawable/ic_ball"
+                    android:visibility="@{data.roles.equalsIgnoreCase(`Bowling`) ? View.VISIBLE : View.GONE}"
+                    tools:visibility="gone"
+                    tools:ignore="ContentDescription"
+                    />
+
+                <ImageView
+                    android:id="@+id/iv_role_all_rounder"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:padding="@dimen/_3sdp"
+                    android:src="@drawable/ic_all_rounder"
+                    android:visibility="@{data.roles.equalsIgnoreCase(`All-rounder`) ? View.VISIBLE : View.GONE}"
+                    tools:visibility="gone"
+                    tools:ignore="ContentDescription"
+                    />
+
+            </RelativeLayout>
+
+            <TextView
+                android:id="@+id/tv_player_age"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_4sdp"
+                android:text="@{`Age :` + data.age + `yrs.`}"
+                android:textSize="@dimen/_12sdp"
+                app:layout_constraintBottom_toBottomOf="@+id/tv_player_role_label"
+                app:layout_constraintStart_toEndOf="@+id/rl_role"
+                app:layout_constraintTop_toTopOf="@+id/tv_player_role_label"
+                tools:text="Age : 21yrs."
+                />
+
+            <TextView
+                android:id="@+id/tv_player_base_price"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_4sdp"
+                android:layout_marginBottom="@dimen/_4sdp"
+                android:text="@string/age"
+                android:textSize="@dimen/_12sdp"
+                app:layout_constraintBottom_toBottomOf="@+id/iv_player_profile_image"
+                app:layout_constraintStart_toStartOf="@+id/tv_player_name"
+                app:layout_constraintTop_toBottomOf="@+id/tv_player_role_label"
+                tools:text="Base Price : 3lac"
+                />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_buy_player"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/_8sdp"
+                android:text="@string/buy"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </com.google.android.material.card.MaterialCardView>
+
+</layout>
