@@ -1,20 +1,27 @@
 package com.example.lcl.util;
 
+import java.text.DecimalFormat;
+
 public class Helpers {
 
-    public static String amountFormatter(long input){
-        String amount = "";
-        if (input != 0) {
-            int digits = String.valueOf(input).length();
-            double n;
-            switch (digits) {
-                case 3:
-                    n = input / 100;
-                    n = Math.round(n);
-                    amount = n + "k";
+    public static String convertCurrency(long number) {
+        int length = String.valueOf(number).length();
+        String currency = "";
 
-            }
+        if (length == 4 || length == 5) {
+            number = number / 1000;
+            number = Math.round(number);
+            currency = number + "K";
+        } else if (length == 6 || length == 7) {
+            number = number / 100000;
+            number = Math.round(number);
+            currency = number + "Lac";
+        } else if (length == 8 || length == 9) {
+            number = number / 10000000;
+            number = Math.round(number);
+            currency = number + "Cr";
         }
-        return amount;
+        return currency;
     }
+
 }

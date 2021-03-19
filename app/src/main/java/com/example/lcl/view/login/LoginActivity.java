@@ -13,6 +13,8 @@ import com.example.lcl.R;
 import com.example.lcl.data.login.LoginResponse;
 import com.example.lcl.databinding.ActivityLoginBinding;
 import com.example.lcl.network.ApiClient;
+import com.example.lcl.util.Helpers;
+
 import org.jetbrains.annotations.NotNull;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -28,6 +30,12 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         binding = DataBindingUtil.setContentView(this, R.layout.activity_login);
         binding.btnLogin.setOnClickListener(this);
         binding.pbLogin.hide();
+
+        try {
+            Log.d(TAG, "onCreate: " +  Helpers.convertCurrency(250000));;
+        } catch (Exception e){
+            e.printStackTrace();
+        }
     }
 
     private boolean validateFields(){
