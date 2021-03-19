@@ -1,7 +1,5 @@
 package com.example.lcl.util;
 
-import java.text.DecimalFormat;
-
 public class Helpers {
 
     public static String convertCurrency(long number) {

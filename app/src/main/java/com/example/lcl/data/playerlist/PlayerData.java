@@ -1,5 +1,6 @@
 package com.example.lcl.data.playerlist;
 
+import com.example.lcl.util.Helpers;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
@@ -249,8 +250,8 @@ public class PlayerData {
         this.bowlingStyle = bowlingStyle;
     }
 
-    public Integer getBasePrice() {
-        return basePrice;
+    public String getBasePrice() {
+        return Helpers.convertCurrency(basePrice);
     }
 
     public void setBasePrice(Integer basePrice) {

@@ -31,11 +31,6 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         binding.btnLogin.setOnClickListener(this);
         binding.pbLogin.hide();
 
-        try {
-            Log.d(TAG, "onCreate: " +  Helpers.convertCurrency(250000));;
-        } catch (Exception e){
-            e.printStackTrace();
-        }
     }
 
     private boolean validateFields(){
