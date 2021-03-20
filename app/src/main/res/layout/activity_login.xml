@@ -58,7 +58,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/gotham"
-                    android:text="Cricket"
+                    android:text="Champion"
                     android:textColor="#ffffff"
                     android:textSize="32sp" />
 
@@ -115,7 +115,7 @@
             android:paddingRight="32dp">
 
 
-            <com.google.android.material.textfield.TextInputLayout
+            <!--<com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textColorHint="#96ffffff"
@@ -134,14 +134,37 @@
                     android:textColor="@android:color/white"
                     android:textSize="16sp" />
             </com.google.android.material.textfield.TextInputLayout>
-
+-->
             <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textColorHint="#96ffffff"
-                android:theme="@style/EditScreenTextInputLayoutStyle">
+                android:textColor="#96ffffff"
+                android:hint="User ID"
+                >
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/editTextName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:drawablePadding="16dp"
+                    android:drawableRight="@drawable/ic_email_white_24dp"
+                    android:fontFamily="@font/calibri"
+                    android:inputType="textEmailAddress"
+                    android:maxLines="1"
+                    android:textColor="@android:color/white"
+                    android:textSize="16sp"/>
 
-                <EditText
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+
+            <!--            <com.google.android.material.textfield.TextInputLayout-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:textColorHint="#96ffffff"-->
+<!--                android:theme="@style/EditScreenTextInputLayoutStyle">-->
+
+               <!-- <EditText
                     android:id="@+id/editTextPassword"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
@@ -152,8 +175,33 @@
                     android:inputType="textPassword"
                     android:maxLines="1"
                     android:textColor="@android:color/white"
-                    android:textSize="16sp" />
+                    android:textSize="16sp" />-->
+<!--            </com.google.android.material.textfield.TextInputLayout>-->
+
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="#96ffffff"
+                android:hint="Enter password"
+                >
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/editTextPassword"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textPassword"
+                    android:drawablePadding="16dp"
+                    android:drawableRight="@drawable/ic_lock_white_24dp"
+                    android:fontFamily="@font/calibri"
+                    android:maxLines="1"
+                    android:textColor="@android:color/white"
+                    android:textSize="16sp"/>
+
             </com.google.android.material.textfield.TextInputLayout>
+
+
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -167,7 +215,6 @@
                     android:id="@+id/btn_Login"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="16dp"
                     android:background="@drawable/buttonshapewhitebg"
                     android:fontFamily="@font/calibri"
                     android:text="Sign in"

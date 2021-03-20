@@ -17,11 +17,11 @@
 
     <ImageView
         android:id="@+id/user_photo"
-        android:layout_width="150dp"
-        android:layout_height="150dp"
+        android:layout_width="172dp"
+        android:layout_height="172dp"
         android:layout_marginLeft="26dp"
         android:layout_marginTop="12dp"
-        android:src="@drawable/players"
+        android:src="@drawable/lcl"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -32,7 +32,7 @@
         android:layout_marginStart="20dp"
         android:layout_marginTop="56dp"
         android:fontFamily="@font/calibri"
-        android:text="Lokhandwala\nChampion League"
+        android:text="Lokhandwala\n  Champion\n     League"
         android:textColor="#ffffff"
         android:textSize="20sp"
         android:textStyle="bold"
@@ -56,7 +56,7 @@
     <GridLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_marginTop="150dp"
+        android:layout_marginTop="172dp"
         android:layout_marginBottom="5dp"
         android:alignmentMode="alignMargins"
         android:columnCount="2"
@@ -188,7 +188,7 @@
                     android:layout_width="64dp"
                     android:layout_height="64dp"
                     android:layout_gravity="center_horizontal"
-                    android:background="@drawable/minimum_bid"/>
+                    android:background="@drawable/players"/>
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -261,6 +261,7 @@
         </androidx.cardview.widget.CardView>
 
         <androidx.cardview.widget.CardView
+            android:id="@+id/teams"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_rowWeight="1"
@@ -284,7 +285,7 @@
                     android:layout_width="64dp"
                     android:layout_height="64dp"
                     android:layout_gravity="center_horizontal"
-                    android:background="@drawable/teams"/>
+                    android:background="@drawable/players" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -309,6 +310,7 @@
         </androidx.cardview.widget.CardView>
 
         <androidx.cardview.widget.CardView
+            android:id="@+id/players"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_rowWeight="1"
