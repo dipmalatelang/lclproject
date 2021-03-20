@@ -1,8 +1,14 @@
 package com.example.lcl.view.login;
 
+import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
+import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
@@ -10,6 +16,8 @@ import com.example.lcl.R;
 import com.example.lcl.data.login.LoginResponse;
 import com.example.lcl.databinding.ActivityLoginBinding;
 import com.example.lcl.network.ApiClient;
+import com.example.lcl.view.HomeScreen_Activity;
+
 import org.jetbrains.annotations.NotNull;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -19,12 +27,59 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     ActivityLoginBinding binding;
     private static final String TAG = "LoginActivity";
 
+    ImageView imageView;
+    TextView textView;
+    int count = 0;
+
+    @SuppressLint("ClickableViewAccessibility")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        requestWindowFeature(Window.FEATURE_NO_TITLE);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         super.onCreate(savedInstanceState);
+
         binding = DataBindingUtil.setContentView(this, R.layout.activity_login);
         binding.btnLogin.setOnClickListener(this);
         binding.pbLogin.hide();
+
+        /*Login front*/
+        imageView = findViewById(R.id.imageView);
+        textView = findViewById(R.id.textView);
+        imageView.setOnTouchListener(new OnSwipeTouchListener(getApplicationContext()) {
+            public void onSwipeTop() {
+            }
+
+            public void onSwipeRight() {
+                if (count == 0) {
+                    imageView.setImageResource(R.drawable.good_night_img);
+                    count = 1;
+                } else {
+                    imageView.setImageResource(R.drawable.good_morning_img);
+                    count = 0;
+                }
+            }
+
+            public void onSwipeLeft() {
+                if (count == 0) {
+                    imageView.setImageResource(R.drawable.good_night_img);
+                    count = 1;
+                } else {
+                    imageView.setImageResource(R.drawable.good_morning_img);
+                    count = 0;
+                }
+            }
+
+            public void onSwipeBottom() {
+                if (count == 0) {
+                    imageView.setImageResource(R.drawable.good_night_img);
+                    count = 1;
+                } else {
+                    imageView.setImageResource(R.drawable.good_morning_img);
+                    count = 0;
+                }
+            }
+
+        });
     }
 
     private boolean validateFields(){
@@ -45,6 +100,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             if (response.isSuccessful()) {
                 if(response.body() != null){
                     Log.d(TAG, "onResponse: " + response.body().getMessage());
+                    Intent mIntent = new Intent(LoginActivity.this, HomeScreen_Activity.class);
+                    startActivity(mIntent);
                 }
             } else {
                 Log.e(TAG, "onResponse: something went wrong");

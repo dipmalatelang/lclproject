@@ -8,7 +8,7 @@ android {
 
     defaultConfig {
         applicationId "com.example.lcl"
-        minSdkVersion 16
+        minSdkVersion 21
         targetSdkVersion 30
         versionCode 1
         versionName "1.0"
@@ -66,7 +66,7 @@ dependencies {
     implementation "com.squareup.okhttp3:okhttp:$rootProject.okhttp_version"
     implementation "com.squareup.okhttp3:logging-interceptor:$rootProject.okhttp_version"
 
-    implementation 'com.android.support:design:27.1.1'
+//    implementation 'com.android.support:design:27.1.1'
 
 
 
