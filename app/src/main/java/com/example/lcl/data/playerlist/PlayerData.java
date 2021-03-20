@@ -3,8 +3,9 @@ package com.example.lcl.data.playerlist;
 import com.example.lcl.util.Helpers;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
+import java.io.Serializable;
 
-public class PlayerData {
+public class PlayerData implements Serializable {
 
     @SerializedName("$id")
     @Expose
@@ -16,7 +17,7 @@ public class PlayerData {
 
     @SerializedName("pNumber")
     @Expose
-    private String pNumber;
+    private String playerNumber;
 
     @SerializedName("pPassword")
     @Expose
@@ -52,7 +53,7 @@ public class PlayerData {
 
     @SerializedName("hieght")
     @Expose
-    private String hieght;
+    private String height;
 
     @SerializedName("photo")
     @Expose
@@ -115,7 +116,7 @@ public class PlayerData {
     private String remark;
 
     public String get$id() {
-        return $id;
+        return $id == null ? " " : $id;
     }
 
     public void set$id(String $id) {
@@ -123,23 +124,23 @@ public class PlayerData {
     }
 
     public Integer getuId() {
-        return uId;
+        return uId == null ? 0 : uId;
     }
 
     public void setuId(Integer uId) {
         this.uId = uId;
     }
 
-    public String getpNumber() {
-        return pNumber;
+    public String getPlayerNumber() {
+        return playerNumber == null ? " " : playerNumber;
     }
 
-    public void setpNumber(String pNumber) {
-        this.pNumber = pNumber;
+    public void setPlayerNumber(String playerNumber) {
+        this.playerNumber = playerNumber;
     }
 
     public String getpPassword() {
-        return pPassword;
+        return pPassword == null ? " " : pPassword;
     }
 
     public void setpPassword(String pPassword) {
@@ -147,7 +148,7 @@ public class PlayerData {
     }
 
     public String getFirstName() {
-        return firstName;
+        return firstName == null ? " " : firstName;
     }
 
     public void setFirstName(String firstName) {
@@ -155,7 +156,7 @@ public class PlayerData {
     }
 
     public String getMiddleName() {
-        return middleName;
+        return middleName == null ? " " : middleName;
     }
 
     public void setMiddleName(String middleName) {
@@ -163,7 +164,7 @@ public class PlayerData {
     }
 
     public String getLastName() {
-        return lastName;
+        return lastName == null ? " " : lastName;
     }
 
     public void setLastName(String lastName) {
@@ -171,7 +172,7 @@ public class PlayerData {
     }
 
     public String getMobile() {
-        return mobile;
+        return mobile == null ? " " : mobile;
     }
 
     public void setMobile(String mobile) {
@@ -179,7 +180,7 @@ public class PlayerData {
     }
 
     public String getEmail() {
-        return email;
+        return email == null ? " " : email;
     }
 
     public void setEmail(String email) {
@@ -187,31 +188,31 @@ public class PlayerData {
     }
 
     public String getBorn() {
-        return born;
+        return born == null ? " " : born;
     }
 
     public void setBorn(String born) {
         this.born = born;
     }
 
-    public Integer getAge() {
-        return age;
+    public String getAge() {
+        return age == null ? " " : String.valueOf(age);
     }
 
     public void setAge(Integer age) {
         this.age = age;
     }
 
-    public String getHieght() {
-        return hieght;
+    public String getHeight() {
+        return height == null ? " " : height;
     }
 
-    public void setHieght(String hieght) {
-        this.hieght = hieght;
+    public void setHeight(String height) {
+        this.height = height;
     }
 
     public String getPhoto() {
-        return photo;
+        return photo == null ? " " : photo;
     }
 
     public void setPhoto(String photo) {
@@ -219,7 +220,7 @@ public class PlayerData {
     }
 
     public String getCategory() {
-        return category;
+        return category == null ? " " : category;
     }
 
     public void setCategory(String category) {
@@ -227,7 +228,7 @@ public class PlayerData {
     }
 
     public String getRoles() {
-        return roles;
+        return roles == null ? " " : roles;
     }
 
     public void setRoles(String roles) {
@@ -235,7 +236,7 @@ public class PlayerData {
     }
 
     public String getBatingStyle() {
-        return batingStyle;
+        return batingStyle == null ? " " : batingStyle;
     }
 
     public void setBatingStyle(String batingStyle) {
@@ -243,7 +244,7 @@ public class PlayerData {
     }
 
     public String getBowlingStyle() {
-        return bowlingStyle;
+        return bowlingStyle == null ? " " : bowlingStyle;
     }
 
     public void setBowlingStyle(String bowlingStyle) {
@@ -251,15 +252,15 @@ public class PlayerData {
     }
 
     public String getBasePrice() {
-        return Helpers.convertCurrency(basePrice);
+        return basePrice == null ? " " : Helpers.convertCurrency(basePrice);
     }
 
     public void setBasePrice(Integer basePrice) {
         this.basePrice = basePrice;
     }
 
-    public Integer getSoldPrice() {
-        return soldPrice;
+    public String getSoldPrice() {
+        return soldPrice == null ? " " : Helpers.convertCurrency(soldPrice);
     }
 
     public void setSoldPrice(Integer soldPrice) {
@@ -267,7 +268,7 @@ public class PlayerData {
     }
 
     public String getPurchaseByTeam() {
-        return purchaseByTeam;
+        return purchaseByTeam == null ? " " : purchaseByTeam;
     }
 
     public void setPurchaseByTeam(String purchaseByTeam) {
@@ -275,7 +276,7 @@ public class PlayerData {
     }
 
     public String getAreaFrom() {
-        return areaFrom;
+        return areaFrom == null ? " " : areaFrom;
     }
 
     public void setAreaFrom(String areaFrom) {
@@ -283,7 +284,7 @@ public class PlayerData {
     }
 
     public String getBuildingName() {
-        return buildingName;
+        return buildingName == null ? " " : buildingName;
     }
 
     public void setBuildingName(String buildingName) {
@@ -291,7 +292,7 @@ public class PlayerData {
     }
 
     public String getPlayerDescription() {
-        return playerDescription;
+        return playerDescription == null ? " " : playerDescription;
     }
 
     public void setPlayerDescription(String playerDescription) {
@@ -299,7 +300,7 @@ public class PlayerData {
     }
 
     public String getRegisteredAt() {
-        return registeredAt;
+        return registeredAt == null ? " " : registeredAt;
     }
 
     public void setRegisteredAt(String registeredAt) {
@@ -307,7 +308,7 @@ public class PlayerData {
     }
 
     public Boolean getActive() {
-        return isActive;
+        return isActive == null ? false : isActive;
     }
 
     public void setActive(Boolean active) {
@@ -315,7 +316,7 @@ public class PlayerData {
     }
 
     public Boolean getDisplayable() {
-        return isDisplayable;
+        return isDisplayable  == null ? false : isDisplayable;
     }
 
     public void setDisplayable(Boolean displayable) {
@@ -323,7 +324,7 @@ public class PlayerData {
     }
 
     public String getRemark() {
-        return remark;
+        return remark == null ? " " : remark;
     }
 
     public void setRemark(String remark) {
