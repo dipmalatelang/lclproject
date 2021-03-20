@@ -45,6 +45,7 @@ public class PlayerListing extends AppCompatActivity {
                     binding.setData(response.body().getData());
                     binding.setCallback((dataType, view, position) -> {
                         Toast.makeText(PlayerListing.this, "clicked " + ((PlayerData) dataType).getFirstName(), Toast.LENGTH_LONG).show();
+
                     });
                 }
             } else {
