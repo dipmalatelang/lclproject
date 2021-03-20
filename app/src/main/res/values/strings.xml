@@ -29,4 +29,6 @@
     <string name="registered_at">Registered at</string>
     <string name="active">Active</string>
     <string name="remark">Remark</string>
+    <string name="field_can_not_be_empty_tag">Field can not be empty</string>
+    <string name="please_enter_correct_email_tag">Please enter correct email id</string>
 </resources>
