@@ -32,9 +32,7 @@ public class TeamListActivity extends AppCompatActivity {
         binding.pbTeamList.hide();
 
         binding.tbTeamList.tvReportIssueTitle.setText(getString(R.string.team_title));
-        binding.tbTeamList.tvBack.setOnClickListener(v -> {
-            onBackPressed();
-        });
+        binding.tbTeamList.tvBack.setOnClickListener(v -> onBackPressed());
         performServerCallToFetchTeamList("");
     }
 

@@ -116,7 +116,7 @@ public class PlayerData implements Serializable {
     private String remark;
 
     public String get$id() {
-        return $id == null ? " " : $id;
+        return $id == null ? "No Data available " : $id;
     }
 
     public void set$id(String $id) {
@@ -132,7 +132,7 @@ public class PlayerData implements Serializable {
     }
 
     public String getPlayerNumber() {
-        return playerNumber == null ? " " : playerNumber;
+        return playerNumber == null ? "No Data available " : playerNumber;
     }
 
     public void setPlayerNumber(String playerNumber) {
@@ -140,7 +140,7 @@ public class PlayerData implements Serializable {
     }
 
     public String getpPassword() {
-        return pPassword == null ? " " : pPassword;
+        return pPassword == null ? "No Data available " : pPassword;
     }
 
     public void setpPassword(String pPassword) {
@@ -148,7 +148,7 @@ public class PlayerData implements Serializable {
     }
 
     public String getFirstName() {
-        return firstName == null ? " " : firstName;
+        return firstName == null ? "No Data available " : firstName;
     }
 
     public void setFirstName(String firstName) {
@@ -156,7 +156,7 @@ public class PlayerData implements Serializable {
     }
 
     public String getMiddleName() {
-        return middleName == null ? " " : middleName;
+        return middleName == null ? "No Data available " : middleName;
     }
 
     public void setMiddleName(String middleName) {
@@ -164,7 +164,7 @@ public class PlayerData implements Serializable {
     }
 
     public String getLastName() {
-        return lastName == null ? " " : lastName;
+        return lastName == null ? "No Data available " : lastName;
     }
 
     public void setLastName(String lastName) {
@@ -172,7 +172,7 @@ public class PlayerData implements Serializable {
     }
 
     public String getMobile() {
-        return mobile == null ? " " : mobile;
+        return mobile == null ? "No Data available " : mobile;
     }
 
     public void setMobile(String mobile) {
@@ -180,7 +180,7 @@ public class PlayerData implements Serializable {
     }
 
     public String getEmail() {
-        return email == null ? " " : email;
+        return email == null ? "No Data available " : email;
     }
 
     public void setEmail(String email) {
@@ -188,7 +188,7 @@ public class PlayerData implements Serializable {
     }
 
     public String getBorn() {
-        return born == null ? " " : born;
+        return born == null ? "No Data available " : born;
     }
 
     public void setBorn(String born) {
@@ -196,7 +196,7 @@ public class PlayerData implements Serializable {
     }
 
     public String getAge() {
-        return age == null ? " " : String.valueOf(age);
+        return age == null ? "No Data available " : String.valueOf(age);
     }
 
     public void setAge(Integer age) {
@@ -204,7 +204,7 @@ public class PlayerData implements Serializable {
     }
 
     public String getHeight() {
-        return height == null ? " " : height;
+        return height == null ? "No Data available " : height;
     }
 
     public void setHeight(String height) {
@@ -212,7 +212,7 @@ public class PlayerData implements Serializable {
     }
 
     public String getPhoto() {
-        return photo == null ? " " : photo;
+        return photo == null ? "No Data available " : photo;
     }
 
     public void setPhoto(String photo) {
@@ -220,7 +220,7 @@ public class PlayerData implements Serializable {
     }
 
     public String getCategory() {
-        return category == null ? " " : category;
+        return category == null ? "No Data available " : category;
     }
 
     public void setCategory(String category) {
@@ -228,7 +228,7 @@ public class PlayerData implements Serializable {
     }
 
     public String getRoles() {
-        return roles == null ? " " : roles;
+        return roles == null ? "No Data available " : roles;
     }
 
     public void setRoles(String roles) {
@@ -236,7 +236,7 @@ public class PlayerData implements Serializable {
     }
 
     public String getBatingStyle() {
-        return batingStyle == null ? " " : batingStyle;
+        return batingStyle == null ? "No Data available " : batingStyle;
     }
 
     public void setBatingStyle(String batingStyle) {
@@ -244,7 +244,7 @@ public class PlayerData implements Serializable {
     }
 
     public String getBowlingStyle() {
-        return bowlingStyle == null ? " " : bowlingStyle;
+        return bowlingStyle == null ? "No Data available " : bowlingStyle;
     }
 
     public void setBowlingStyle(String bowlingStyle) {
@@ -252,7 +252,7 @@ public class PlayerData implements Serializable {
     }
 
     public String getBasePrice() {
-        return basePrice == null ? " " : Helpers.convertCurrency(basePrice);
+        return basePrice == null ? "No Data available " : Helpers.convertCurrency(basePrice);
     }
 
     public void setBasePrice(Integer basePrice) {
@@ -260,7 +260,7 @@ public class PlayerData implements Serializable {
     }
 
     public String getSoldPrice() {
-        return soldPrice == null ? " " : Helpers.convertCurrency(soldPrice);
+        return soldPrice == null ? "No Data available " : Helpers.convertCurrency(soldPrice);
     }
 
     public void setSoldPrice(Integer soldPrice) {
@@ -268,7 +268,7 @@ public class PlayerData implements Serializable {
     }
 
     public String getPurchaseByTeam() {
-        return purchaseByTeam == null ? " " : purchaseByTeam;
+        return purchaseByTeam == null ? "No Data available " : purchaseByTeam;
     }
 
     public void setPurchaseByTeam(String purchaseByTeam) {
@@ -276,7 +276,7 @@ public class PlayerData implements Serializable {
     }
 
     public String getAreaFrom() {
-        return areaFrom == null ? " " : areaFrom;
+        return areaFrom == null ? "No Data available " : areaFrom;
     }
 
     public void setAreaFrom(String areaFrom) {
@@ -284,7 +284,7 @@ public class PlayerData implements Serializable {
     }
 
     public String getBuildingName() {
-        return buildingName == null ? " " : buildingName;
+        return buildingName == null ? "No Data available " : buildingName;
     }
 
     public void setBuildingName(String buildingName) {
@@ -292,7 +292,7 @@ public class PlayerData implements Serializable {
     }
 
     public String getPlayerDescription() {
-        return playerDescription == null ? " " : playerDescription;
+        return playerDescription == null ? "No Data available " : playerDescription;
     }
 
     public void setPlayerDescription(String playerDescription) {
@@ -300,7 +300,7 @@ public class PlayerData implements Serializable {
     }
 
     public String getRegisteredAt() {
-        return registeredAt == null ? " " : registeredAt;
+        return registeredAt == null ? "No Data available " : registeredAt;
     }
 
     public void setRegisteredAt(String registeredAt) {
@@ -324,7 +324,7 @@ public class PlayerData implements Serializable {
     }
 
     public String getRemark() {
-        return remark == null ? " " : remark;
+        return remark == null ? "No Data available " : remark;
     }
 
     public void setRemark(String remark) {
