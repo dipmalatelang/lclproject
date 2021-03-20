@@ -59,7 +59,8 @@
                 app:layout_constraintStart_toEndOf="@+id/iv_player_profile_image"
                 app:layout_constraintTop_toTopOf="@+id/iv_player_profile_image"
                 app:layout_constraintBottom_toTopOf="@+id/tv_player_age"
-                tools:text="Sachin Tendulkar" />
+                tools:text="Sachin Tendulkar"
+                android:layout_marginLeft="@dimen/_8sdp" />
 
             <RelativeLayout
                 android:id="@+id/rl_role"
@@ -69,7 +70,7 @@
                 app:layout_constraintBottom_toBottomOf="@+id/tv_player_name"
                 app:layout_constraintStart_toEndOf="@+id/tv_player_name"
                 app:layout_constraintTop_toTopOf="@+id/tv_player_name"
-                >
+                android:layout_marginLeft="@dimen/_8sdp">
 
                 <ImageView
                     android:id="@+id/iv_role_batsman"
