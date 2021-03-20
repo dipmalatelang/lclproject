@@ -7,7 +7,7 @@
         <import type="android.view.View"/>
         <variable
             name="data"
-            type="com.example.lcl.data.playerlist.PlayerData" />
+            type="com.example.lcl.data.teams.TeamData" />
 
         <variable
             name="position"
@@ -52,13 +52,13 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/_8sdp"
-                android:text="@{data.firstName + ` ` + data.lastName}"
+                android:text="@{data.teamName}"
                 android:textSize="@dimen/_11sdp"
                 android:textStyle="bold"
                 app:layout_constraintStart_toEndOf="@+id/iv_player_profile_image"
                 app:layout_constraintTop_toTopOf="@+id/iv_player_profile_image"
                 app:layout_constraintTop_toBottomOf="@+id/tv_player_role"
-                tools:text="Sachin Tendulkar"
+                tools:text="Bulls"
                 />
 
             <TextView
@@ -66,37 +66,37 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/_4sdp"
-                android:text="@{`(` + data.age + `yrs)`}"
+                android:text="@{`(` + data.maxSquadSize + ` squad size)`}"
                 android:textSize="@dimen/_10sdp"
                 app:layout_constraintBottom_toBottomOf="@+id/tv_player_name"
                 app:layout_constraintStart_toEndOf="@+id/tv_player_name"
                 app:layout_constraintTop_toTopOf="@+id/tv_player_name"
-                tools:text="(21yrs)"
+                tools:text="(14 squad size)"
                 />
 
             <TextView
                 android:id="@+id/tv_player_role"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@{data.roles + ` • `}"
+                android:text="@{`₹`+ data.allocatedFund + ` • `}"
                 android:textSize="@dimen/_9sdp"
                 app:layout_constraintBottom_toBottomOf="@+id/iv_player_profile_image"
                 app:layout_constraintStart_toStartOf="@+id/tv_player_name"
                 app:layout_constraintTop_toBottomOf="@+id/tv_player_name"
-                tools:text="Batting All Rounder •" />
+                tools:text="₹ 10000000 •" />
 
             <TextView
                 android:id="@+id/tv_player_price"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/_1sdp"
-                android:text="@{data.basePrice}"
+                android:text="@{` Remaining ₹` + data.fundSpent}"
                 android:textSize="@dimen/_9sdp"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="@+id/tv_player_role"
                 app:layout_constraintStart_toEndOf="@+id/tv_player_role"
                 app:layout_constraintTop_toTopOf="@+id/tv_player_role"
-                tools:text="2Lac" />
+                tools:text=" Remaining ₹ 9750000" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

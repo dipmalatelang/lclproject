@@ -1,13 +1,17 @@
 package com.example.lcl.view.playerlist;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.SearchView;
 import androidx.databinding.DataBindingUtil;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.Toast;
 
 import com.example.lcl.R;
+import com.example.lcl.base.BaseAdapter;
 import com.example.lcl.data.playerlist.PlayerData;
 import com.example.lcl.data.playerlist.PlayerListResponse;
 import com.example.lcl.databinding.ActivityPlayerListingBinding;
@@ -27,6 +31,11 @@ public class PlayerListing extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = DataBindingUtil.setContentView(this, R.layout.activity_player_listing);
+
+        binding.tbPlayerList.tvReportIssueTitle.setText(getString(R.string.player_title));
+        binding.tbPlayerList.tvBack.setOnClickListener(v -> {
+            onBackPressed();
+        });
         performServerCallToGetPlayers();
     }
 
@@ -43,9 +52,7 @@ public class PlayerListing extends AppCompatActivity {
             if (response.isSuccessful()) {
                 if(response.body().getStatus()){
                     binding.setData(response.body().getData());
-                    binding.setCallback((dataType, view, position) -> {
-                        Toast.makeText(PlayerListing.this, "clicked " + ((PlayerData) dataType).getFirstName(), Toast.LENGTH_LONG).show();
-                    });
+                    binding.setCallback((dataType, view, position) -> gotoPlayerDetail((PlayerData) dataType));
                 }
             } else {
                 Log.e(TAG, "onResponse: something went wrong");
@@ -58,4 +65,10 @@ public class PlayerListing extends AppCompatActivity {
             Log.e(TAG, "onFailure: " + t.getMessage());
         }
     };
+
+    private void gotoPlayerDetail(PlayerData data){
+        Intent playerIntent = new Intent(this, PlayerDetailsActivity.class);
+        playerIntent.putExtra("player_data", data);
+        startActivity(playerIntent);
+    }
 }

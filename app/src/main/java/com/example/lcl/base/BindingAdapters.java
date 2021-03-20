@@ -31,7 +31,7 @@ public class BindingAdapters {
                 .load(imageUrl)
                 .diskCacheStrategy(DiskCacheStrategy.ALL)
                 .centerCrop()
-                .placeholder(R.drawable.ic_all_rounder)
+                .placeholder(R.drawable.players)
                 .into(imageView);
 
     }
