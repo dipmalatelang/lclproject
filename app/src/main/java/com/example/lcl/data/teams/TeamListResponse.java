@@ -1,5 +1,6 @@
 package com.example.lcl.data.teams;
 
+import com.example.lcl.data.playerlist.PlayerData;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
@@ -19,6 +20,10 @@ public class TeamListResponse {
     @SerializedName("totalRecords")
     @Expose
     private Integer totalRecords;
+
+    @SerializedName("resPlayers")
+    @Expose
+    private List<PlayerData> resPlayers = null;
 
     public Boolean getStatus() {
         return status;
@@ -50,5 +55,13 @@ public class TeamListResponse {
 
     public void setTotalRecords(Integer totalRecords) {
         this.totalRecords = totalRecords;
+    }
+
+    public List<PlayerData> getResPlayers() {
+        return resPlayers;
+    }
+
+    public void setResPlayers(List<PlayerData> resPlayers) {
+        this.resPlayers = resPlayers;
     }
 }

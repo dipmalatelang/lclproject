@@ -1,13 +1,18 @@
 package com.example.lcl.view.teamlist;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.databinding.DataBindingUtil;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.util.Log;
 import android.widget.Toast;
 
 import com.example.lcl.R;
+import com.example.lcl.data.teams.TeamData;
 import com.example.lcl.data.teams.TeamListResponse;
+import com.example.lcl.databinding.ActivityTeamListBinding;
 import com.example.lcl.network.ApiClient;
 
 import org.jetbrains.annotations.NotNull;
@@ -19,16 +24,21 @@ import retrofit2.Response;
 public class TeamListActivity extends AppCompatActivity {
 
     private static final String TAG = "TeamListActivity";
+    private ActivityTeamListBinding binding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_team_list);
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_team_list);
+        binding.pbTeamList.hide();
 
-        performServerCallToFetchTeamList("T1");
+        binding.tbTeamList.tvReportIssueTitle.setText(getString(R.string.team_title));
+        binding.tbTeamList.tvBack.setOnClickListener(v -> onBackPressed());
+        performServerCallToFetchTeamList("");
     }
 
     private void performServerCallToFetchTeamList(String teamId){
+        binding.pbTeamList.show();
         ApiClient.create().getTeamList(teamId)
                 .enqueue(teamCallback);
     }
@@ -36,8 +46,12 @@ public class TeamListActivity extends AppCompatActivity {
     private final Callback<TeamListResponse> teamCallback = new Callback<TeamListResponse>() {
         @Override
         public void onResponse(@NotNull Call<TeamListResponse> call, Response<TeamListResponse> response) {
+            binding.pbTeamList.hide();
             if (response.isSuccessful()) {
-                Toast.makeText(TeamListActivity.this, response.body().getData().get(0).getTeamName(), Toast.LENGTH_SHORT).show();
+                if(response.body().getStatus()){
+                    binding.setData(response.body().getData());
+                    binding.setCallback((dataType, view, position) ->  gotoTeamDetail((TeamData) dataType));
+                }
             } else {
                 Log.e(TAG, "onResponse: something went wrong");
             }
@@ -45,7 +59,14 @@ public class TeamListActivity extends AppCompatActivity {
 
         @Override
         public void onFailure(@NotNull Call<TeamListResponse> call, Throwable t) {
+            binding.pbTeamList.hide();
             Log.e(TAG, "onFailure: " + t.getMessage());
         }
     };
+
+    private void gotoTeamDetail(TeamData data){
+        Intent teamIntent = new Intent(this, TeamDetailsActivity.class);
+        teamIntent.putExtra("team_data",  data);
+        startActivity(teamIntent);
+    }
 }

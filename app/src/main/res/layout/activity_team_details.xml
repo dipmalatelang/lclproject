@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View"/>
+        <variable
+            name="data"
+            type="com.example.lcl.data.teams.TeamData" />
+
+        <variable
+            name="callback"
+            type="com.example.lcl.base.BaseInterface" />
+
+        <variable
+            name="listData"
+            type="java.util.List" />
+
+        <variable
+            name="teamResponse"
+            type="com.example.lcl.data.teams.TeamListResponse" />
+
+    </data>
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/shape_bg"
+        tools:context=".view.teamlist.TeamDetailsActivity">
+
+        <include
+            android:id="@+id/tb_team_details"
+            layout="@layout/layout_common_toolbaar"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            />
+
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/iv_player_profile_image"
+            android:layout_width="@dimen/_90sdp"
+            android:layout_height="@dimen/_90sdp"
+            android:layout_marginTop="20dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.054"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tb_team_details"
+            app:playerImageUrl="@{data.photo}"
+            tools:src="@mipmap/ic_launcher_round" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_details_team_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/_8sdp"
+            android:layout_marginTop="4dp"
+            android:text="@{data.teamNumber + ` ` + data.teamName}"
+            android:textSize="@dimen/_14sdp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.158"
+            app:layout_constraintStart_toEndOf="@+id/iv_player_profile_image"
+            app:layout_constraintTop_toTopOf="@+id/iv_player_profile_image"
+            tools:text="T1 - Tiger" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_details_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/_8sdp"
+            android:text="@{data.firstName + ` ` + data.lastName + ` - ` +data.buildingName}"
+            app:layout_constraintStart_toStartOf="@+id/tv_details_team_name"
+            app:layout_constraintTop_toBottomOf="@+id/tv_details_team_name"
+            tools:text="Tejas Patel - OM Parshwanath" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_details_allocated_fund"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/_8sdp"
+            android:layout_marginStart="8dp"
+            android:text="@{data.fundSpent + `/` + data.allocatedFund}"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="@+id/tv_details_team_name"
+            app:layout_constraintTop_toBottomOf="@+id/tv_details_name"
+            tools:text="2000000/10000000" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_details_allocated_fund2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/_8sdp"
+            android:layout_marginStart="20dp"
+            android:text="@{data.totalPlayer + `/` + data.maxSquadSize}"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="@+id/tv_details_team_name"
+            app:layout_constraintTop_toBottomOf="@+id/tv_details_allocated_fund"
+            tools:text="4/14" />
+
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginStart="@dimen/_8sdp"
+            android:layout_marginEnd="@dimen/_8sdp"
+            android:layout_marginTop="@dimen/_8sdp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/iv_player_profile_image">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_player_list"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginTop="@dimen/_2sdp"
+                app:layoutFile="@{@layout/item_layout_player}"
+                app:listData="@{listData}"
+                app:listener="@{callback}"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tb_player_list"
+                android:visibility="@{safeUnbox(teamResponse.resPlayers.size() > 0  ? View.VISIBLE : View.GONE)}"
+                tools:listitem="@layout/item_layout_player"
+                />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_no_data"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:visibility="@{safeUnbox(teamResponse.resPlayers.size() > 0  ? View.GONE : View.VISIBLE)}"
+                android:text="@string/no_data_available"
+                android:textSize="@dimen/_15sdp"
+                android:textStyle="bold"
+                />
+
+        </com.google.android.material.card.MaterialCardView>
+
+        <androidx.core.widget.ContentLoadingProgressBar
+            android:id="@+id/pb_player_list"
+            style="@style/progressBarStyle"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

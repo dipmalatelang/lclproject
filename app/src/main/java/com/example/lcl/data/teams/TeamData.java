@@ -3,7 +3,9 @@ package com.example.lcl.data.teams;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class TeamData {
+import java.io.Serializable;
+
+public class TeamData implements Serializable {
 
     @SerializedName("uId")
     @Expose
@@ -11,7 +13,7 @@ public class TeamData {
 
     @SerializedName("tNumber")
     @Expose
-    private String tNumber;
+    private String teamNumber;
 
     @SerializedName("tPassword")
     @Expose
@@ -100,12 +102,12 @@ public class TeamData {
         this.uId = uId;
     }
 
-    public String gettNumber() {
-        return tNumber;
+    public String getTeamNumber() {
+        return teamNumber;
     }
 
-    public void settNumber(String tNumber) {
-        this.tNumber = tNumber;
+    public void setTeamNumber(String teamNumber) {
+        this.teamNumber = teamNumber;
     }
 
     public String gettPassword() {
@@ -165,15 +167,15 @@ public class TeamData {
     }
 
     public String getPhoto() {
-        return photo;
+        return photo + "" + teamNumber + ".jpg";
     }
 
     public void setPhoto(String photo) {
         this.photo = photo;
     }
 
-    public Integer getAllocatedFund() {
-        return allocatedFund;
+    public String getAllocatedFund() {
+        return String.valueOf(allocatedFund);
     }
 
     public void setAllocatedFund(Integer allocatedFund) {
@@ -188,8 +190,8 @@ public class TeamData {
         this.fundRemaining = fundRemaining;
     }
 
-    public Integer getFundSpent() {
-        return fundSpent;
+    public String getFundSpent() {
+        return String.valueOf(fundSpent);
     }
 
     public void setFundSpent(Integer fundSpent) {

@@ -1,0 +1,941 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="data"
+            type="com.example.lcl.data.playerlist.PlayerData" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/shape_bg"
+        tools:context=".view.playerlist.PlayerDetailsActivity">
+
+        <include
+            android:id="@+id/tb_player_details"
+            layout="@layout/layout_common_toolbaar"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            />
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/iv_player_profile_image"
+            android:layout_width="@dimen/_90sdp"
+            android:layout_height="@dimen/_90sdp"
+            android:layout_marginTop="@dimen/_8sdp"
+            app:playerImageUrl="@{data.photo}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tb_player_details"
+            tools:src="@mipmap/ic_launcher_round"
+            />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_details_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/_8sdp"
+            android:text="@{data.firstName + ` ` + data.lastName}"
+            android:textSize="@dimen/_14sdp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="@+id/iv_player_profile_image"
+            app:layout_constraintStart_toStartOf="@+id/iv_player_profile_image"
+            app:layout_constraintTop_toBottomOf="@+id/iv_player_profile_image"
+            tools:text="Tejas Patel"
+            />
+
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginTop="@dimen/_16sdp"
+            android:layout_marginStart="@dimen/_8sdp"
+            android:layout_marginEnd="@dimen/_8sdp"
+            android:layout_marginBottom="@dimen/_8sdp"
+            app:layout_constraintTop_toBottomOf="@+id/tv_details_name"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            >
+
+            <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    >
+
+                    <TableRow
+                        android:id="@+id/numberRow"
+                        android:layout_marginTop="@dimen/_4sdp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="2"
+                            android:padding="@dimen/_8sdp"
+                            android:text="@string/number"
+                            android:textSize="@dimen/_10sdp"
+                            />
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:text="@string/colon"
+                            android:textSize="@dimen/_11sdp"
+                            android:textStyle="bold"
+                            />
+
+                        <TextView
+                            android:id="@+id/tv_player_number"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="3"
+                            android:padding="@dimen/_8sdp"
+                            android:text="@{data.playerNumber}"
+                            android:textSize="@dimen/_10sdp"
+                            android:textStyle="bold"
+                            tools:text="2"
+                            />
+
+                    </TableRow>
+
+                    <View
+                        android:layout_height="1dp"
+                        android:layout_width="match_parent"
+                        android:background="@color/textcardColor"
+                        android:layout_margin="@dimen/_4sdp"
+                        />
+
+                    <TableRow
+                        android:id="@+id/mobileeRow"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="2"
+                            android:padding="@dimen/_8sdp"
+                            android:text="@string/mobile"
+                            android:textSize="@dimen/_10sdp"
+                            />
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:text="@string/colon"
+                            android:textSize="@dimen/_11sdp"
+                            android:textStyle="bold"
+                            />
+
+                        <TextView
+                            android:id="@+id/tv_details_mobile"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="3"
+                            android:padding="@dimen/_8sdp"
+                            android:text="@{data.mobile}"
+                            android:textSize="@dimen/_10sdp"
+                            android:textStyle="bold"
+                            tools:text="12345672"
+                            />
+
+                    </TableRow>
+
+                    <View
+                        android:layout_height="1dp"
+                        android:layout_width="match_parent"
+                        android:background="@color/textcardColor"
+                        android:layout_margin="@dimen/_4sdp"
+                        />
+
+                    <TableRow
+                        android:id="@+id/emailRow"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="2"
+                            android:padding="@dimen/_8sdp"
+                            android:text="@string/email"
+                            android:textSize="@dimen/_10sdp"
+                            />
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:text="@string/colon"
+                            android:textSize="@dimen/_11sdp"
+                            android:textStyle="bold"
+                            />
+
+                        <TextView
+                            android:id="@+id/tv_details_email"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="3"
+                            android:padding="@dimen/_8sdp"
+                            android:text="@{data.email}"
+                            android:textSize="@dimen/_10sdp"
+                            android:textStyle="bold"
+                            tools:text="test@yopmail.com"
+                            />
+
+                    </TableRow>
+
+                    <View
+                        android:layout_height="1dp"
+                        android:layout_width="match_parent"
+                        android:background="@color/textcardColor"
+                        android:layout_margin="@dimen/_4sdp"
+                        />
+
+                    <TableRow
+                        android:id="@+id/bornhRow"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="2"
+                            android:padding="@dimen/_8sdp"
+                            android:text="@string/born"
+                            android:textSize="@dimen/_10sdp"
+                            />
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:text="@string/colon"
+                            android:textSize="@dimen/_11sdp"
+                            android:textStyle="bold"
+                            />
+
+                        <TextView
+                            android:id="@+id/tv_details_born"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="3"
+                            android:padding="@dimen/_8sdp"
+                            android:text="@{data.born}"
+                            android:textSize="@dimen/_10sdp"
+                            android:textStyle="bold"
+                            tools:text="27/07/93"
+                            />
+
+                    </TableRow>
+
+                    <View
+                        android:layout_height="1dp"
+                        android:layout_width="match_parent"
+                        android:background="@color/textcardColor"
+                        android:layout_margin="@dimen/_4sdp"
+                        />
+
+                    <TableRow
+                        android:id="@+id/battingRow"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="2"
+                            android:padding="@dimen/_8sdp"
+                            android:text="@string/batting_style"
+                            android:textSize="@dimen/_10sdp"
+                            />
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:text="@string/colon"
+                            android:textSize="@dimen/_11sdp"
+                            android:textStyle="bold"
+                            />
+
+                        <TextView
+                            android:id="@+id/tv_details_bat_style"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="3"
+                            android:padding="@dimen/_8sdp"
+                            android:text="@{data.batingStyle}"
+                            android:textSize="@dimen/_10sdp"
+                            android:textStyle="bold"
+                            tools:text="Lefty"
+                            />
+
+                    </TableRow>
+
+                    <View
+                        android:layout_height="1dp"
+                        android:layout_width="match_parent"
+                        android:background="@color/textcardColor"
+                        android:layout_margin="@dimen/_4sdp"
+                        />
+
+                    <TableRow
+                        android:id="@+id/bowlRow"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="2"
+                            android:padding="@dimen/_8sdp"
+                            android:text="@string/bowling_style"
+                            android:textSize="@dimen/_10sdp"
+                            />
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:text="@string/colon"
+                            android:textSize="@dimen/_11sdp"
+                            android:textStyle="bold"
+                            />
+
+                        <TextView
+                            android:id="@+id/tv_details_bowl_style"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="3"
+                            android:padding="@dimen/_8sdp"
+                            android:text="@{data.bowlingStyle}"
+                            android:textSize="@dimen/_10sdp"
+                            android:textStyle="bold"
+                            tools:text="spinner"
+                            />
+
+                    </TableRow>
+
+                    <View
+                        android:layout_height="1dp"
+                        android:layout_width="match_parent"
+                        android:background="@color/textcardColor"
+                        android:layout_margin="@dimen/_4sdp"
+                        />
+
+                    <TableRow
+                        android:id="@+id/ageRow"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="2"
+                            android:padding="@dimen/_8sdp"
+                            android:text="@string/age"
+                            android:textSize="@dimen/_10sdp"
+                            />
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:text="@string/colon"
+                            android:textSize="@dimen/_11sdp"
+                            android:textStyle="bold"
+                            />
+
+                        <TextView
+                            android:id="@+id/tv_details_age"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="3"
+                            android:padding="@dimen/_8sdp"
+                            android:text="@{data.age}"
+                            android:textSize="@dimen/_10sdp"
+                            android:textStyle="bold"
+                            tools:text="27"
+                            />
+
+                    </TableRow>
+
+                    <View
+                        android:layout_height="1dp"
+                        android:layout_width="match_parent"
+                        android:background="@color/textcardColor"
+                        android:layout_margin="@dimen/_4sdp"
+                        />
+
+                    <TableRow
+                        android:id="@+id/heightRow"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="2"
+                            android:padding="@dimen/_8sdp"
+                            android:text="@string/height"
+                            android:textSize="@dimen/_10sdp"
+                            />
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:text="@string/colon"
+                            android:textSize="@dimen/_11sdp"
+                            android:textStyle="bold"
+                            />
+
+                        <TextView
+                            android:id="@+id/tv_details_height"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="3"
+                            android:padding="@dimen/_8sdp"
+                            android:text="@{data.height}"
+                            android:textSize="@dimen/_10sdp"
+                            android:textStyle="bold"
+                            tools:text="180 cm"
+                            />
+
+                    </TableRow>
+
+                    <View
+                        android:layout_height="1dp"
+                        android:layout_width="match_parent"
+                        android:background="@color/textcardColor"
+                        android:layout_margin="@dimen/_4sdp"
+                        />
+
+                    <TableRow
+                        android:id="@+id/roleRow"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="2"
+                            android:padding="@dimen/_8sdp"
+                            android:text="@string/role"
+                            android:textSize="@dimen/_10sdp"
+                            />
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:text="@string/colon"
+                            android:textSize="@dimen/_11sdp"
+                            android:textStyle="bold"
+                            />
+
+                        <TextView
+                            android:id="@+id/tv_details_role"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="3"
+                            android:padding="@dimen/_8sdp"
+                            android:text="@{data.roles}"
+                            android:textSize="@dimen/_10sdp"
+                            android:textStyle="bold"
+                            tools:text="All rounder"
+                            />
+
+                    </TableRow>
+
+                    <View
+                        android:layout_height="1dp"
+                        android:layout_width="match_parent"
+                        android:background="@color/textcardColor"
+                        android:layout_margin="@dimen/_4sdp"
+                        />
+
+                    <TableRow
+                        android:id="@+id/basePriceRow"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="2"
+                            android:padding="@dimen/_8sdp"
+                            android:text="@string/base_price"
+                            android:textSize="@dimen/_10sdp"
+                            />
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:text="@string/colon"
+                            android:textSize="@dimen/_11sdp"
+                            android:textStyle="bold"
+                            />
+
+                        <TextView
+                            android:id="@+id/tv_details_base_price"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="3"
+                            android:padding="@dimen/_8sdp"
+                            android:text="@{data.basePrice}"
+                            android:textSize="@dimen/_10sdp"
+                            android:textStyle="bold"
+                            tools:text="2lac"
+                            />
+
+                    </TableRow>
+
+                    <View
+                        android:layout_height="1dp"
+                        android:layout_width="match_parent"
+                        android:background="@color/textcardColor"
+                        android:layout_margin="@dimen/_4sdp"
+                        />
+
+                    <TableRow
+                        android:id="@+id/soldPriceRow"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="2"
+                            android:padding="@dimen/_8sdp"
+                            android:text="@string/sold_price"
+                            android:textSize="@dimen/_10sdp"
+                            />
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:text="@string/colon"
+                            android:textSize="@dimen/_11sdp"
+                            android:textStyle="bold"
+                            />
+
+                        <TextView
+                            android:id="@+id/tv_details_sold_price"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="3"
+                            android:padding="@dimen/_8sdp"
+                            android:text="@{data.soldPrice}"
+                            android:textSize="@dimen/_10sdp"
+                            android:textStyle="bold"
+                            tools:text="2.5lac"
+                            />
+
+                    </TableRow>
+
+                    <View
+                        android:layout_height="1dp"
+                        android:layout_width="match_parent"
+                        android:background="@color/textcardColor"
+                        android:layout_margin="@dimen/_4sdp"
+                        />
+
+                    <TableRow
+                        android:id="@+id/purchasedByRow"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="2"
+                            android:padding="@dimen/_8sdp"
+                            android:text="@string/purchased_by"
+                            android:textSize="@dimen/_10sdp"
+                            />
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:text="@string/colon"
+                            android:textSize="@dimen/_11sdp"
+                            android:textStyle="bold"
+                            />
+
+                        <TextView
+                            android:id="@+id/tv_details_purchased_by"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="3"
+                            android:padding="@dimen/_8sdp"
+                            android:text="@{data.purchaseByTeam}"
+                            android:textSize="@dimen/_10sdp"
+                            android:textStyle="bold"
+                            tools:text="2"
+                            />
+
+                    </TableRow>
+
+                    <View
+                        android:layout_height="1dp"
+                        android:layout_width="match_parent"
+                        android:background="@color/textcardColor"
+                        android:layout_margin="@dimen/_4sdp"
+                        />
+
+                    <TableRow
+                        android:id="@+id/areahRow"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="2"
+                            android:padding="@dimen/_8sdp"
+                            android:text="@string/area"
+                            android:textSize="@dimen/_10sdp"
+                            />
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:text="@string/colon"
+                            android:textSize="@dimen/_11sdp"
+                            android:textStyle="bold"
+                            />
+
+                        <TextView
+                            android:id="@+id/tv_details_area"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="3"
+                            android:padding="@dimen/_8sdp"
+                            android:text="@{data.areaFrom}"
+                            android:textSize="@dimen/_10sdp"
+                            android:textStyle="bold"
+                            tools:text="2"
+                            />
+
+                    </TableRow>
+
+                    <View
+                        android:layout_height="1dp"
+                        android:layout_width="match_parent"
+                        android:background="@color/textcardColor"
+                        android:layout_margin="@dimen/_4sdp"
+                        />
+
+                    <TableRow
+                        android:id="@+id/buildingRow"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="2"
+                            android:padding="@dimen/_8sdp"
+                            android:text="@string/building"
+                            android:textSize="@dimen/_10sdp"
+                            />
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:text="@string/colon"
+                            android:textSize="@dimen/_11sdp"
+                            android:textStyle="bold"
+                            />
+
+                        <TextView
+                            android:id="@+id/tv_details_building"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="3"
+                            android:padding="@dimen/_8sdp"
+                            android:text="@{data.buildingName}"
+                            android:textSize="@dimen/_10sdp"
+                            android:textStyle="bold"
+                            tools:text="2"
+                            />
+
+                    </TableRow>
+
+                    <View
+                        android:layout_height="1dp"
+                        android:layout_width="match_parent"
+                        android:background="@color/textcardColor"
+                        android:layout_margin="@dimen/_4sdp"
+                        tools:ignore="TooManyViews" />
+
+                    <TableRow
+                        android:id="@+id/registeredRow"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="2"
+                            android:padding="@dimen/_8sdp"
+                            android:text="@string/registered_at"
+                            android:textSize="@dimen/_10sdp"
+                            />
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:text="@string/colon"
+                            android:textSize="@dimen/_11sdp"
+                            android:textStyle="bold"
+                            />
+
+                        <TextView
+                            android:id="@+id/tv_details_registerd_at"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="3"
+                            android:padding="@dimen/_8sdp"
+                            android:text="@{data.registeredAt}"
+                            android:textSize="@dimen/_10sdp"
+                            android:textStyle="bold"
+                            tools:text="2"
+                            />
+
+                    </TableRow>
+
+                    <View
+                        android:layout_height="1dp"
+                        android:layout_width="match_parent"
+                        android:background="@color/textcardColor"
+                        android:layout_margin="@dimen/_4sdp"
+                        />
+
+                    <TableRow
+                        android:id="@+id/isActiveRow"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="2"
+                            android:padding="@dimen/_8sdp"
+                            android:text="@string/active"
+                            android:textSize="@dimen/_10sdp"
+                            />
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:text="@string/colon"
+                            android:textSize="@dimen/_11sdp"
+                            android:textStyle="bold"
+                            />
+
+                        <TextView
+                            android:id="@+id/tv_details_is_active"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="3"
+                            android:padding="@dimen/_8sdp"
+                            android:text="@{data.active ? `YES` : `NO`}"
+                            android:textSize="@dimen/_10sdp"
+                            android:textStyle="bold"
+                            tools:text="no"
+                            />
+
+                    </TableRow>
+
+                    <View
+                        android:layout_height="1dp"
+                        android:layout_width="match_parent"
+                        android:background="@color/textcardColor"
+                        android:layout_margin="@dimen/_4sdp"
+                        />
+
+                    <TableRow
+                        android:id="@+id/displayableRow"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="2"
+                            android:padding="@dimen/_8sdp"
+                            android:text="@string/displayable"
+                            android:textSize="@dimen/_10sdp"
+                            />
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:text="@string/colon"
+                            android:textSize="@dimen/_11sdp"
+                            android:textStyle="bold"
+                            />
+
+                        <TextView
+                            android:id="@+id/tv_details_displayable"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="3"
+                            android:padding="@dimen/_8sdp"
+                            android:text="@{data.displayable ? `YES` : `NO`}"
+                            android:textSize="@dimen/_10sdp"
+                            android:textStyle="bold"
+                            tools:text="yes"
+                            />
+
+                    </TableRow>
+
+                    <View
+                        android:layout_height="1dp"
+                        android:layout_width="match_parent"
+                        android:background="@color/textcardColor"
+                        android:layout_margin="@dimen/_4sdp"
+                        />
+
+                    <TableRow
+                        android:id="@+id/descriptionRow"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="2"
+                            android:padding="@dimen/_8sdp"
+                            android:text="@string/description"
+                            android:textSize="@dimen/_10sdp"
+                            />
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:text="@string/colon"
+                            android:textSize="@dimen/_11sdp"
+                            android:textStyle="bold"
+                            />
+
+                        <TextView
+                            android:id="@+id/tv_details_description"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="3"
+                            android:padding="@dimen/_8sdp"
+                            android:text="@{data.playerDescription}"
+                            android:textSize="@dimen/_10sdp"
+                            android:textStyle="bold"
+                            tools:text="Ravikant is a reliable batsman and a more than useful left-arm spinner for Tiger. He made everyone sit up and take notice when he was one of the stand-out players in the 2004 Under-19 World Cup by performing consistently with bat and ball. When the Zimbabwean players strike happened in 2020, Williams was widely expected to be given a call to the national side. His father, Colin Williams, however refused to send his son, suggesting that let him concentrate on studies."
+                            />
+
+                    </TableRow>
+
+                    <View
+                        android:layout_height="1dp"
+                        android:layout_width="match_parent"
+                        android:background="@color/textcardColor"
+                        android:layout_margin="@dimen/_4sdp"
+                        />
+
+                    <TableRow
+                        android:id="@+id/remarkRow"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="2"
+                            android:padding="@dimen/_8sdp"
+                            android:text="@string/remark"
+                            android:textSize="@dimen/_10sdp"
+                            />
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:text="@string/colon"
+                            android:textSize="@dimen/_11sdp"
+                            android:textStyle="bold"
+                            />
+
+                        <TextView
+                            android:id="@+id/tv_details_remark"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="3"
+                            android:padding="@dimen/_8sdp"
+                            android:text="@{data.remark}"
+                            android:textSize="@dimen/_10sdp"
+                            android:textStyle="bold"
+                            tools:text="Awesome"
+                            />
+
+                    </TableRow>
+
+                    <View
+                        android:layout_height="1dp"
+                        android:layout_width="match_parent"
+                        android:background="@color/textcardColor"
+                        android:layout_margin="@dimen/_4sdp"
+                        />
+
+                </LinearLayout>
+
+            </ScrollView>
+
+        </com.google.android.material.card.MaterialCardView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

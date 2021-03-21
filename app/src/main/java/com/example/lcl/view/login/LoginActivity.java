@@ -102,10 +102,12 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         public void onResponse(@NotNull Call<LoginResponse> call, Response<LoginResponse> response) {
             binding.pbLogin.hide();
             if (response.isSuccessful()) {
-                if(response.body() != null){
+                if(response.body().getStatus()){
                     Log.d(TAG, "onResponse: " + response.body().getMessage());
                     Intent mIntent = new Intent(LoginActivity.this, HomeScreen_Activity.class);
                     startActivity(mIntent);
+                } else {
+                    Toast.makeText(LoginActivity.this, "Something went wrong, please try again", Toast.LENGTH_SHORT).show();
                 }
             } else {
                 Log.e(TAG, "onResponse: something went wrong");
