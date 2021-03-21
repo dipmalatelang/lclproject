@@ -114,27 +114,6 @@
             android:paddingLeft="32dp"
             android:paddingRight="32dp">
 
-
-            <!--<com.google.android.material.textfield.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textColorHint="#96ffffff"
-                android:theme="@style/EditScreenTextInputLayoutStyle">
-
-                <EditText
-                    android:id="@+id/editTextName"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:drawablePadding="16dp"
-                    android:drawableRight="@drawable/ic_email_white_24dp"
-                    android:fontFamily="@font/calibri"
-                    android:hint="User ID"
-                    android:inputType="textEmailAddress"
-                    android:maxLines="1"
-                    android:textColor="@android:color/white"
-                    android:textSize="16sp" />
-            </com.google.android.material.textfield.TextInputLayout>
--->
             <com.google.android.material.textfield.TextInputLayout
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
                 android:layout_width="match_parent"
@@ -155,29 +134,6 @@
                     android:textSize="16sp"/>
 
             </com.google.android.material.textfield.TextInputLayout>
-
-
-
-            <!--            <com.google.android.material.textfield.TextInputLayout-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:textColorHint="#96ffffff"-->
-<!--                android:theme="@style/EditScreenTextInputLayoutStyle">-->
-
-               <!-- <EditText
-                    android:id="@+id/editTextPassword"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:drawablePadding="16dp"
-                    android:drawableRight="@drawable/ic_lock_white_24dp"
-                    android:fontFamily="@font/calibri"
-                    android:hint="Password"
-                    android:inputType="textPassword"
-                    android:maxLines="1"
-                    android:textColor="@android:color/white"
-                    android:textSize="16sp" />-->
-<!--            </com.google.android.material.textfield.TextInputLayout>-->
-
 
             <com.google.android.material.textfield.TextInputLayout
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
