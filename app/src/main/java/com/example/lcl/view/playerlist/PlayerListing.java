@@ -32,7 +32,7 @@ public class PlayerListing extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         binding = DataBindingUtil.setContentView(this, R.layout.activity_player_listing);
 
-        binding.tbPlayerList.tvReportIssueTitle.setText(getString(R.string.player_title));
+        binding.tbPlayerList.tvTitle.setText(getString(R.string.player_title));
         binding.tbPlayerList.tvBack.setOnClickListener(v -> {
             onBackPressed();
         });

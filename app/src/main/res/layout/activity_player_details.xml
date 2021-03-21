@@ -48,10 +48,11 @@
             app:layout_constraintEnd_toEndOf="@+id/iv_player_profile_image"
             app:layout_constraintStart_toStartOf="@+id/iv_player_profile_image"
             app:layout_constraintTop_toBottomOf="@+id/iv_player_profile_image"
-            tools:text="Tejas Patel"
+            tools:text="Virat Kohli"
             />
 
         <com.google.android.material.card.MaterialCardView
+            android:id="@+id/cv_player_info"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_marginTop="@dimen/_16sdp"
@@ -61,7 +62,7 @@
             app:layout_constraintTop_toBottomOf="@+id/tv_details_name"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/btn_buy_player"
             >
 
             <ScrollView
@@ -935,6 +936,29 @@
             </ScrollView>
 
         </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_buy_player"
+            android:layout_width="@dimen/_90sdp"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/_8sdp"
+            android:text="@string/buy"
+            android:textSize="@dimen/_11sdp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/cv_player_info"
+            android:visibility="visible"
+            />
+
+        <androidx.core.widget.ContentLoadingProgressBar
+            android:id="@+id/pb_player_details"
+            style="@style/progressBarStyle"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

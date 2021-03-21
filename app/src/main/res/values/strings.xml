@@ -29,4 +29,8 @@
     <string name="registered_at">Registered at</string>
     <string name="active">Active</string>
     <string name="remark">Remark</string>
+    <string name="sold">SOLD</string>
+    <string name="enter_team_name">Enter Team Name</string>
+    <string name="enter_amount">Enter amount</string>
+    <string name="buy_title">BUY THIS PLAYER</string>
 </resources>

@@ -31,7 +31,7 @@ public class TeamListActivity extends AppCompatActivity {
         binding = DataBindingUtil.setContentView(this, R.layout.activity_team_list);
         binding.pbTeamList.hide();
 
-        binding.tbTeamList.tvReportIssueTitle.setText(getString(R.string.team_title));
+        binding.tbTeamList.tvTitle.setText(getString(R.string.team_title));
         binding.tbTeamList.tvBack.setOnClickListener(v -> onBackPressed());
         performServerCallToFetchTeamList("");
     }
