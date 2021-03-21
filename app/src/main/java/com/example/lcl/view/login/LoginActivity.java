@@ -55,8 +55,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
             public void onSwipeRight() {
                 if (count == 0) {
-//                    imageView.setImageResource(R.drawable.good_night_img);
-                    imageView.setImageResource(R.drawable.sachin);
+                    imageView.setImageResource(R.drawable.good_night_img);
+//                    imageView.setImageResource(R.drawable.sachin);
                     count = 1;
                 } else {
                     imageView.setImageResource(R.drawable.good_morning_img);
@@ -69,8 +69,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                     imageView.setImageResource(R.drawable.good_night_img);
                     count = 1;
                 } else {
-//                    imageView.setImageResource(R.drawable.good_morning_img);
-                    imageView.setImageResource(R.drawable.sachin);
+                    imageView.setImageResource(R.drawable.good_morning_img);
+//                    imageView.setImageResource(R.drawable.sachin);
 
                     count = 0;
                 }
@@ -78,7 +78,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
             public void onSwipeBottom() {
                 if (count == 0) {
-                    imageView.setImageResource(R.drawable.sachin);
+                    imageView.setImageResource(R.drawable.good_night_img);
                     count = 1;
                 } else {
                     imageView.setImageResource(R.drawable.good_morning_img);

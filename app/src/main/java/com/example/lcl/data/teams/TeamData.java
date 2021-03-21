@@ -167,7 +167,7 @@ public class TeamData implements Serializable {
     }
 
     public String getPhoto() {
-        return photo + "" + teamNumber + ".jpg";
+        return photo ;
     }
 
     public void setPhoto(String photo) {
