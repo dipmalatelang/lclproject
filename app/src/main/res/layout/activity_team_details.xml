@@ -7,7 +7,7 @@
 
         <import type="android.view.View"/>
         <variable
-            name="data"
+            name="teamData"
             type="com.example.lcl.data.teams.TeamData" />
 
         <variable
@@ -15,7 +15,7 @@
             type="com.example.lcl.base.BaseInterface" />
 
         <variable
-            name="listData"
+            name="data"
             type="java.util.List" />
 
         <variable
@@ -49,7 +49,7 @@
             app:layout_constraintHorizontal_bias="0.054"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tb_team_details"
-            app:playerImageUrl="@{data.photo}"
+            app:playerImageUrl="@{teamData.photo}"
             tools:src="@mipmap/ic_launcher_round" />
 
         <androidx.appcompat.widget.AppCompatTextView
@@ -58,7 +58,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/_8sdp"
             android:layout_marginTop="4dp"
-            android:text="@{data.teamNumber + ` ` + data.teamName}"
+            android:text="@{teamData.teamNumber + ` ` + teamData.teamName}"
             android:textSize="@dimen/_14sdp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
@@ -72,7 +72,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/_8sdp"
-            android:text="@{data.firstName + ` ` + data.lastName + ` - ` +data.buildingName}"
+            android:text="@{teamData.firstName + ` ` + teamData.lastName + ` - ` +teamData.buildingName}"
             app:layout_constraintStart_toStartOf="@+id/tv_details_team_name"
             app:layout_constraintTop_toBottomOf="@+id/tv_details_team_name"
             tools:text="Tejas Patel - OM Parshwanath" />
@@ -83,7 +83,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/_8sdp"
             android:layout_marginStart="8dp"
-            android:text="@{data.fundSpent + `/` + data.allocatedFund}"
+            android:text="@{teamData.fundSpent + `/` + teamData.allocatedFund}"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="@+id/tv_details_team_name"
             app:layout_constraintTop_toBottomOf="@+id/tv_details_name"
@@ -95,7 +95,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/_8sdp"
             android:layout_marginStart="20dp"
-            android:text="@{data.totalPlayer + `/` + data.maxSquadSize}"
+            android:text="@{teamData.totalPlayer + `/` + teamData.maxSquadSize}"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="@+id/tv_details_team_name"
             app:layout_constraintTop_toBottomOf="@+id/tv_details_allocated_fund"
@@ -119,10 +119,9 @@
                 android:layout_height="match_parent"
                 android:layout_marginTop="@dimen/_2sdp"
                 app:layoutFile="@{@layout/item_layout_player}"
-                app:listData="@{listData}"
+                app:listData="@{data}"
                 app:listener="@{callback}"
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                android:visibility="@{teamResponse.resPlayers.size() > 0  ? View.VISIBLE : View.GONE}"
                 tools:listitem="@layout/item_layout_player"
                 />
 
@@ -131,22 +130,19 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:visibility="@{teamResponse.resPlayers.size() > 0  ? View.GONE : View.VISIBLE}"
+                android:visibility="gone"
                 android:text="@string/no_data_available"
                 android:textSize="@dimen/_15sdp"
                 android:textStyle="bold"
                 />
 
-        </com.google.android.material.card.MaterialCardView>
+            <androidx.core.widget.ContentLoadingProgressBar
+                android:id="@+id/pb_player_details_list"
+                style="@style/progressBarStyle"
+                android:layout_gravity="center"
+                />
 
-        <androidx.core.widget.ContentLoadingProgressBar
-            android:id="@+id/pb_player_details_list"
-            style="@style/progressBarStyle"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            />
+        </com.google.android.material.card.MaterialCardView>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

@@ -5,6 +5,8 @@ import com.example.lcl.data.login.LoginResponse;
 import com.example.lcl.data.playerlist.PlayerListResponse;
 import com.example.lcl.data.registerplayer.RegisterPlayerModel;
 import com.example.lcl.data.teams.TeamListResponse;
+import com.example.lcl.data.teams.TeamResponse;
+
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.GET;
@@ -16,6 +18,9 @@ public interface ApiService {
 
     @GET("TeamList")
     Call<TeamListResponse> getTeamList(@Query("teamId") String teamId);
+
+    @GET("TeamList")
+    Call<TeamResponse> getTeamResponseWithPlayers(@Query("teamId") String teamId);
 
     @GET("PlayerList")
     Call<PlayerListResponse> getPlayerList(@Query("playerId") String playerId);

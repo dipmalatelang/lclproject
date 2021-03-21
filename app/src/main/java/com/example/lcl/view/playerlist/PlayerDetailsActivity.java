@@ -1,6 +1,7 @@
 package com.example.lcl.view.playerlist;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -108,10 +109,24 @@ public class PlayerDetailsActivity extends AppCompatActivity {
                     String teamName = team.getText().toString();
                     String soldAmount = soldPrice.getText().toString();
                     if (!teamName.isEmpty() && !soldAmount.isEmpty()) {
-                        performServerCallToUpdatePlayer(teamName.toUpperCase(), Long.parseLong(soldAmount));
+                        showConfirmDialog(teamName, soldAmount);
                     } else {
                         Toast.makeText(context, "Please enter all details", Toast.LENGTH_SHORT).show();
                     }
+                    dialog.dismiss();
+                })
+                .setNegativeButton(android.R.string.cancel, (dialog, which) -> {
+                    dialog.dismiss();
+                })
+                .show();
+    }
+
+    private void showConfirmDialog(String teamName, String soldAmount){
+        new MaterialAlertDialogBuilder(this)
+                .setTitle(getString(R.string.confirm_dialog_title))
+                .setMessage("Are you sure you want to buy this player at " + soldAmount + ", for team " + teamName)
+                .setPositiveButton(android.R.string.ok, (dialog, which) -> {
+                    performServerCallToUpdatePlayer(teamName.toUpperCase(), Long.parseLong(soldAmount));
                     dialog.dismiss();
                 })
                 .setNegativeButton(android.R.string.cancel, (dialog, which) -> {

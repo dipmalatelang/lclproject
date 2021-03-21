@@ -1,5 +1,10 @@
 package com.example.lcl.util;
 
+import android.content.Context;
+
+import java.io.IOException;
+import java.io.InputStream;
+
 public class Helpers {
 
     public static String convertCurrency(long number) {
@@ -20,6 +25,26 @@ public class Helpers {
             currency = number + "Cr";
         }
         return currency;
+    }
+
+    public static String getDataFromAssets(Context context){
+            String tContents = "";
+
+            try {
+                InputStream stream = context.getAssets().open("sample.json");
+
+                int size = stream.available();
+                byte[] buffer = new byte[size];
+                stream.read(buffer);
+                stream.close();
+                tContents = new String(buffer);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+            return tContents;
+
+
     }
 
 }

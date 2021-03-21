@@ -4,10 +4,9 @@ import com.example.lcl.data.playerlist.PlayerData;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-import java.io.Serializable;
 import java.util.List;
 
-public class TeamListResponse implements Serializable {
+public class TeamResponse {
 
     @SerializedName("status")
     @Expose
@@ -17,7 +16,7 @@ public class TeamListResponse implements Serializable {
     private String message;
     @SerializedName("data")
     @Expose
-    private List<TeamData> data = null;
+    private TeamData data;
     @SerializedName("totalRecords")
     @Expose
     private Integer totalRecords;
@@ -41,11 +40,11 @@ public class TeamListResponse implements Serializable {
         this.message = message;
     }
 
-    public List<TeamData> getData() {
+    public TeamData getData() {
         return data;
     }
 
-    public void setData(List<TeamData> data) {
+    public void setData(TeamData data) {
         this.data = data;
     }
 

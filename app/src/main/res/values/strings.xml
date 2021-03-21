@@ -35,4 +35,5 @@
     <string name="buy_title">BUY THIS PLAYER</string>
     <string name="team_details_title">Team Details</string>
     <string name="no_data_available">No data Available</string>
+    <string name="confirm_dialog_title">Confirmation</string>
 </resources>
