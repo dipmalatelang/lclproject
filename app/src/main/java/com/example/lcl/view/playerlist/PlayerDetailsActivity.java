@@ -46,25 +46,24 @@ public class PlayerDetailsActivity extends AppCompatActivity {
             onBackPressed();
         });
 
-        boolean isSuperUser = false;
-
-        if(sharedPref.containsKey("user_role")){
-            isSuperUser = sharedPref.getString("user_role", "").equalsIgnoreCase("super");
-        }
-
-        binding.btnBuyPlayer.setVisibility(isSuperUser ? View.VISIBLE : View.INVISIBLE);
-
-        binding.btnBuyPlayer.setOnClickListener(v -> getSoldValue(this));
-
-        if(getIntent() != null){
-            playerData = (PlayerData)getIntent().getSerializableExtra("player_data");
+        if (getIntent() != null) {
+            playerData = (PlayerData) getIntent().getSerializableExtra("player_data");
             binding.setData(playerData);
         } else {
             binding.setData(null);
         }
+
+        boolean isSuperUser = false;
+
+        if (sharedPref.containsKey("user_role")) {
+            isSuperUser = sharedPref.getString("user_role", "").equalsIgnoreCase("super") &&
+                    playerData.getSoldPrice().equalsIgnoreCase("No Data available");
+        }
+        binding.btnBuyPlayer.setVisibility(isSuperUser ? View.VISIBLE : View.INVISIBLE);
+        binding.btnBuyPlayer.setOnClickListener(v -> getSoldValue(this));
     }
 
-    private void performServerCallToUpdatePlayer(String teamId, long soldPrice){
+    private void performServerCallToUpdatePlayer(String teamId, long soldPrice) {
         binding.pbPlayerDetails.show();
         ApiClient.create().updatePlayer(playerData.getPlayerNumber(), teamId, soldPrice)
                 .enqueue(playerListCallback);
@@ -77,7 +76,8 @@ public class PlayerDetailsActivity extends AppCompatActivity {
             if (response.isSuccessful()) {
                 if (response.body().getStatus()) {
                     Toast.makeText(PlayerDetailsActivity.this, response.body().getMessage(), Toast.LENGTH_SHORT).show();
-                } else if(!response.body().getStatus()){
+                    onBackPressed();
+                } else if (!response.body().getStatus()) {
                     Toast.makeText(PlayerDetailsActivity.this, response.body().getMessage(), Toast.LENGTH_SHORT).show();
                 } else {
                     Toast.makeText(PlayerDetailsActivity.this, "Something went wrong", Toast.LENGTH_SHORT).show();
@@ -94,7 +94,7 @@ public class PlayerDetailsActivity extends AppCompatActivity {
         }
     };
 
-    private void getSoldValue(Context context){
+    private void getSoldValue(Context context) {
 
         MaterialAlertDialogBuilder dialogBuilder = new MaterialAlertDialogBuilder(context);
         View dialogView = LayoutInflater.from(context).inflate(R.layout.layout_buy_dialog, null, false);
@@ -107,12 +107,12 @@ public class PlayerDetailsActivity extends AppCompatActivity {
                 .setPositiveButton(getString(R.string.buy), (dialog, which) -> {
                     String teamName = team.getText().toString();
                     String soldAmount = soldPrice.getText().toString();
-                    if(!teamName.isEmpty() && !soldAmount.isEmpty()){
+                    if (!teamName.isEmpty() && !soldAmount.isEmpty()) {
                         performServerCallToUpdatePlayer(teamName.toUpperCase(), Long.parseLong(soldAmount));
                     } else {
                         Toast.makeText(context, "Please enter all details", Toast.LENGTH_SHORT).show();
                     }
-                        dialog.dismiss();
+                    dialog.dismiss();
                 })
                 .setNegativeButton(android.R.string.cancel, (dialog, which) -> {
                     dialog.dismiss();

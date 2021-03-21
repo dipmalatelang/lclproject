@@ -107,6 +107,7 @@
             android:layout_marginStart="@dimen/_8sdp"
             android:layout_marginEnd="@dimen/_8sdp"
             android:layout_marginTop="@dimen/_8sdp"
+            android:layout_marginBottom="@dimen/_8sdp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -114,18 +115,14 @@
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rv_player_list"
-                android:layout_width="0dp"
-                android:layout_height="0dp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
                 android:layout_marginTop="@dimen/_2sdp"
                 app:layoutFile="@{@layout/item_layout_player}"
                 app:listData="@{listData}"
                 app:listener="@{callback}"
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tb_player_list"
-                android:visibility="@{safeUnbox(teamResponse.resPlayers.size() > 0  ? View.VISIBLE : View.GONE)}"
+                android:visibility="@{teamResponse.resPlayers.size() > 0  ? View.VISIBLE : View.GONE}"
                 tools:listitem="@layout/item_layout_player"
                 />
 
@@ -134,7 +131,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:visibility="@{safeUnbox(teamResponse.resPlayers.size() > 0  ? View.GONE : View.VISIBLE)}"
+                android:visibility="@{teamResponse.resPlayers.size() > 0  ? View.GONE : View.VISIBLE}"
                 android:text="@string/no_data_available"
                 android:textSize="@dimen/_15sdp"
                 android:textStyle="bold"
@@ -143,7 +140,7 @@
         </com.google.android.material.card.MaterialCardView>
 
         <androidx.core.widget.ContentLoadingProgressBar
-            android:id="@+id/pb_player_list"
+            android:id="@+id/pb_player_details_list"
             style="@style/progressBarStyle"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"

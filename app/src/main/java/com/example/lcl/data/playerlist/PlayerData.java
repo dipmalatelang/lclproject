@@ -260,7 +260,7 @@ public class PlayerData implements Serializable {
     }
 
     public String getSoldPrice() {
-        return soldPrice == null ? "No Data available" : Helpers.convertCurrency(soldPrice);
+        return soldPrice == null || soldPrice == 0 ? "No Data available" : Helpers.convertCurrency(soldPrice);
     }
 
     public void setSoldPrice(Integer soldPrice) {
