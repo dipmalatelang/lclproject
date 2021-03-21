@@ -29,13 +29,13 @@
                 android:gravity="center_vertical"
                 android:textSize="@dimen/_11sdp"
                 android:background="?selectableItemBackgroundBorderless"
-                app:layout_constraintBottom_toBottomOf="@+id/tv_report_issue_title"
+                app:layout_constraintBottom_toBottomOf="@+id/tv_title"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/tv_report_issue_title"
+                app:layout_constraintTop_toTopOf="@+id/tv_title"
                 />
 
             <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/tv_report_issue_title"
+                android:id="@+id/tv_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/_4sdp"

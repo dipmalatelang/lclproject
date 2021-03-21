@@ -5,7 +5,6 @@ import com.example.lcl.data.login.LoginResponse;
 import com.example.lcl.data.playerlist.PlayerListResponse;
 import com.example.lcl.data.registerplayer.RegisterPlayerModel;
 import com.example.lcl.data.teams.TeamListResponse;
-
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.GET;
@@ -24,12 +23,12 @@ public interface ApiService {
     @POST("RegisterPlayer")
     Call<DefaultResponse> registerPlayer(@Body RegisterPlayerModel model);
 
-//    UpdateTeamPlayer?playerId=M1&teamId=T1&soldPrice=250000
+    @GET("UpdateTeamPlayer")
+    Call<DefaultResponse> updatePlayer(
+            @Query("playerId") String playerId,
+            @Query("teamId") String teamId,
+            @Query("soldPrice") long soldPrice);
 
-//    @PUT("UpdateTeamPlayer")
-//    Call<DefaultResponse> registerPlayer(@Body RegisterPlayerModel model);
-
-//    ?userId=M1&&password=1234
     @GET("Login")
     Call<LoginResponse> attemptLogin(
             @Query("userId") String userId,

@@ -48,14 +48,28 @@
                 />
 
             <TextView
-                android:id="@+id/tv_player_name"
+                android:id="@+id/tv_player_id"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/_8sdp"
-                android:text="@{data.firstName + ` ` + data.lastName}"
+                android:text="@{data.playerNumber + `.`}"
                 android:textSize="@dimen/_11sdp"
                 android:textStyle="bold"
                 app:layout_constraintStart_toEndOf="@+id/iv_player_profile_image"
+                app:layout_constraintTop_toTopOf="@+id/iv_player_profile_image"
+                app:layout_constraintTop_toBottomOf="@+id/tv_player_role"
+                tools:text="M1."
+                />
+
+            <TextView
+                android:id="@+id/tv_player_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_2sdp"
+                android:text="@{data.firstName + ` ` + data.lastName}"
+                android:textSize="@dimen/_11sdp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toEndOf="@+id/tv_player_id"
                 app:layout_constraintTop_toTopOf="@+id/iv_player_profile_image"
                 app:layout_constraintTop_toBottomOf="@+id/tv_player_role"
                 tools:text="Sachin Tendulkar"
@@ -81,9 +95,10 @@
                 android:text="@{data.roles + ` • `}"
                 android:textSize="@dimen/_9sdp"
                 app:layout_constraintBottom_toBottomOf="@+id/iv_player_profile_image"
-                app:layout_constraintStart_toStartOf="@+id/tv_player_name"
-                app:layout_constraintTop_toBottomOf="@+id/tv_player_name"
-                tools:text="Batting All Rounder •" />
+                app:layout_constraintStart_toStartOf="@+id/tv_player_id"
+                app:layout_constraintTop_toBottomOf="@+id/tv_player_id"
+                tools:text="Batting All Rounder •"
+                />
 
             <TextView
                 android:id="@+id/tv_player_price"
@@ -96,9 +111,33 @@
                 app:layout_constraintBottom_toBottomOf="@+id/tv_player_role"
                 app:layout_constraintStart_toEndOf="@+id/tv_player_role"
                 app:layout_constraintTop_toTopOf="@+id/tv_player_role"
-                tools:text="2Lac" />
+                tools:text="2Lac"
+                />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <RelativeLayout
+            android:id="@+id/rl_sold_out"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_50sdp"
+            android:background="@drawable/shape_round_disable"
+            android:visibility="@{data.soldPrice.equalsIgnoreCase(`No Data available`) ? View.GONE : View.VISIBLE}"
+            >
+
+            <TextView
+                android:id="@+id/tv_player_sold_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_alignParentEnd="true"
+                android:layout_marginEnd="@dimen/_16sdp"
+                android:text="@string/sold"
+                android:textSize="@dimen/_20sdp"
+                android:textStyle="bold"
+                android:textColor="@color/colorPrimaryDark"
+                />
+
+        </RelativeLayout>
 
     </com.google.android.material.card.MaterialCardView>
 

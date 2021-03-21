@@ -18,6 +18,7 @@ import com.example.lcl.R;
 import com.example.lcl.data.login.LoginResponse;
 import com.example.lcl.databinding.ActivityLoginBinding;
 import com.example.lcl.network.ApiClient;
+import com.example.lcl.util.SharedPref;
 import com.example.lcl.view.HomeScreen_Activity;
 
 import org.jetbrains.annotations.NotNull;
@@ -26,8 +27,9 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class LoginActivity extends AppCompatActivity implements View.OnClickListener{
-    ActivityLoginBinding binding;
+    private ActivityLoginBinding binding;
     private static final String TAG = "LoginActivity";
+    private SharedPref sharedPref;
 
     ImageView imageView;
     TextView textView;
@@ -43,6 +45,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         binding = DataBindingUtil.setContentView(this, R.layout.activity_login);
         binding.btnLogin.setOnClickListener(this);
         binding.pbLogin.hide();
+        sharedPref = SharedPref.getInstance();
         /*Login front*/
         imageView = findViewById(R.id.imageView);
         textView = findViewById(R.id.textView);
@@ -102,12 +105,14 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         public void onResponse(@NotNull Call<LoginResponse> call, Response<LoginResponse> response) {
             binding.pbLogin.hide();
             if (response.isSuccessful()) {
-                if(response.body().getStatus()){
-                    Log.d(TAG, "onResponse: " + response.body().getMessage());
-                    Intent mIntent = new Intent(LoginActivity.this, HomeScreen_Activity.class);
-                    startActivity(mIntent);
-                } else {
-                    Toast.makeText(LoginActivity.this, "Something went wrong, please try again", Toast.LENGTH_SHORT).show();
+                if(response.body() != null){
+                    if(response.body().getStatus()){
+                        sharedPref.addString("user_role",response.body().getRole());
+                        Log.d(TAG, "onResponse: " + response.body().getMessage());
+                        Intent mIntent = new Intent(LoginActivity.this, HomeScreen_Activity.class);
+                        startActivity(mIntent);
+                    }
+                    Toast.makeText(LoginActivity.this, response.body().getMessage(), Toast.LENGTH_SHORT).show();
                 }
             } else {
                 Log.e(TAG, "onResponse: something went wrong");
@@ -125,6 +130,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     public void onClick(View v) {
         if(v.getId() == R.id.btn_Login){
             if(validateFields()){
+                sharedPref.clearAll();
                 performServerCallToLogin(
                         binding.editTextName.getText().toString().trim(),
                         binding.editTextPassword.getText().toString().trim()
